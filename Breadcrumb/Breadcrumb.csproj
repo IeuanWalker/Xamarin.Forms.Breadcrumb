@@ -8,8 +8,8 @@
     <!--<TargetFrameworks>Xamarin.iOS10;MonoAndroid80</TargetFrameworks>-->
 
     <!--Assembly and Namespace info -->
-    <AssemblyName>Breadcrumb</AssemblyName>
-    <RootNamespace>Breadcrumb</RootNamespace>
+    <AssemblyName>Xamarin.Forms.Breadcrumb</AssemblyName>
+    <RootNamespace>Xamarin.Forms.Breadcrumb</RootNamespace>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
@@ -24,20 +24,17 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <Owners>Ieuan Walker</Owners>
     <Authors>Ieuan Walker</Authors>
-    <Company />
-    <Description>
-      Automatic breadcrumb control for Xamarin.Forms
-    </Description>
-    <Copyright>Ieuan Walker</Copyright>
-    <PackageProjectUrl></PackageProjectUrl>
-    <PackageIconUrl></PackageIconUrl>
-    <RepositoryUrl></RepositoryUrl>
+    <Description> Automatic breadcrumb control for Xamarin.Forms </Description>
+    <Copyright>Copyright 2019 Ieuan Walker</Copyright>
+    <PackageProjectUrl>https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb</RepositoryUrl>
     <PackageTags>Breadcrumb, navigation, xamarin, xamarin.forms</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <!--<PackageLicenseExpression></PackageLicenseExpression>-->
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageId>Xamarin.Forms.Breadcrumb</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

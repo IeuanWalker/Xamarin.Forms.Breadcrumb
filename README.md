@@ -1,17 +1,18 @@
 # Xamarin.Forms.Breadcrumb
 [![Nuget](https://img.shields.io/nuget/v/Xamarin.Forms.Breadcrumb) ![Nuget](https://img.shields.io/nuget/dt/Xamarin.Forms.Breadcrumb)](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb/1.0.0) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is a breadcrumb navigation control that is complete automatic and uses the Navigation stack and page titles to generate the breadcrumbs.
+This is a breadcrumb navigation control that is completely automatic and uses the Navigation stack to get the page titles to generate the breadcrumbs.
 
-The animation for the control is base on this article - [A Cool Breadcrumbs Bar with Xamarin Forms Animations…](https://theconfuzedsourcecode.wordpress.com/2017/02/04/a-cool-breadcrumbs-bar-with-xamarin-forms-animations/)
+The animation for the control is based on this article - [A Cool Breadcrumbs Bar with Xamarin Forms Animations…](https://theconfuzedsourcecode.wordpress.com/2017/02/04/a-cool-breadcrumbs-bar-with-xamarin-forms-animations/)
+
 Also incorporated [Xamarin.Forms.Pancake](https://github.com/sthewissen/Xamarin.Forms.PancakeView) for more customisation options.
 
 ![Example gif](https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/blob/master/Example.gif)
 
 ## How to use it?
-Install the [Nuget](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb/1.0.0) into your shared project project 
+Install the [NuGet](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb/1.0.0) into your shared project project 
 ```
-Install-Package Xamarin.Forms.Breadcrumb -Version 1.0.0
+Install-Package Xamarin.Forms.Breadcrumb -Version 1.0.1
 ```
 
 To add to a page the first thing we need to do is tell our XAML page where it can find the Breadcrumb control, which is done by adding the following attribute to our ContentPage:
@@ -20,7 +21,7 @@ To add to a page the first thing we need to do is tell our XAML page where it ca
 <ContentPage x:Class="DemoApp.Pages.BasePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Breadcrumb"
+             xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Xamarin.Forms.Breadcrumb"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
