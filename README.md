@@ -10,7 +10,7 @@ Also incorporated [Xamarin.Forms.Pancake](https://github.com/sthewissen/Xamarin.
 ![Example gif](https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/blob/master/Example.gif)
 
 ## How to use it?
-Install the [NuGet](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb/1.0.0) into your shared project project 
+Install the [NuGet package](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb/1.0.0) into your shared project project 
 ```
 Install-Package Xamarin.Forms.Breadcrumb -Version 1.0.2
 ```
@@ -42,13 +42,13 @@ Next up, just add the breadcrumb control onto that page and you're all set.
 | Property | What it does | Extra info |
 |---|---|---- |
 | TextColor | Sets the text color for the breadcrumb and seperator   | A `Color` object. <br> Default value is **black**. <br>*(doesnt include the last breadcrumb)* |
-| CornerRadius | A `CornerRadius` object representing each individual corner's radius. <br> This is property exposed from [PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView) | Uses the `CornerRadius` struct allowing you to specify individual corners. <br> Default value is **10**. <br> *(doesnt include the last breadcrumb)* |
+| CornerRadius | A `CornerRadius` object representing each individual corner's radius for each breadcrumb. <br> This property exposed from [PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView) | Uses the `CornerRadius` struct allowing you to specify individual corners. <br> Default value is **10**. <br> *(doesnt include the last breadcrumb)* |
 | BreadCrumbBackgroundColor | This is the background color for the individual breadcrumbs | A `Color` object. <br> Default value is **Transparent**. <br> *(doesnt include the last breadcrumb)* |
 | LastBreadCrumbTextColor | Sets the text color for the last breadcrumb | A Color object. <br> Default value is **black**. |
 | LastBreadCrumbCornerRadius | A `CornerRadius` object representing each individual corner's radius. <br> This is property exposed from [PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView) | Uses the `CornerRadius` struct allowing you to specify individual corners. <br> Default value is **10**. |
 | LastBreadCrumbBackgroundColor | Sets the background color of the last breadcrumbs |  A Color object. <br> Default value is **Transparent**. |
-| AnimationSpeed | Sets the speed of the animation breadcrumb | Default value is **800**. <br> Set to 0 to disable the animation. |
-| IsNavigationEnabled | Used to remove tab gesture from breadcrumbs | Default value is **True**|
+| AnimationSpeed | Sets the speed of the animated breadcrumb | Default value is **800**. <br> Set to 0 to disable the animation. |
+| IsNavigationEnabled | Used to remove the tab gesture from breadcrumbs | Default value is **True**|
 
 
 
