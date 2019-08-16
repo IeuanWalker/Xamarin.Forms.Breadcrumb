@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <!--To Multi-target you can do this-->
+
+    <!--<TargetFrameworks>Xamarin.iOS10;MonoAndroid80</TargetFrameworks>-->
+
+    <!--Assembly and Namespace info -->
+    <AssemblyName>Breadcrumb</AssemblyName>
+    <RootNamespace>Breadcrumb</RootNamespace>
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+    <Version>1.0.0.0</Version>
+    <NeutralLanguage>en</NeutralLanguage>
+
+    <!--Don't auto add files for me, I will tell you -->
+    <!--<EnableDefaultCompileItems>false</EnableDefaultCompileItems>-->
+
+    <!--Version of C# to use -->
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Ieuan Walker</Authors>
+    <Company />
+    <Description>
+      Automatic breadcrumb control for Xamarin.Forms
+    </Description>
+    <Copyright>Ieuan Walker</Copyright>
+    <PackageProjectUrl></PackageProjectUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <RepositoryUrl></RepositoryUrl>
+    <PackageTags>Breadcrumb, navigation, xamarin, xamarin.forms</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <!--<PackageLicenseExpression></PackageLicenseExpression>-->
+    <PackageId>Xamarin.Forms.Breadcrumb</PackageId>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- This None is here so the conditionally included files show up in the Solution Explorer -->
+    <None Include="**\*.cs;**\*.xml;**\*.axml;**\*.png" Exclude="obj\**\*.*;bin\**\*.*;bin;obj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.673156" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.1.5" />
+  </ItemGroup>
+
+</Project>
