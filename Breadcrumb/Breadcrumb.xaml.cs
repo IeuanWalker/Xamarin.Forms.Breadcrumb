@@ -118,15 +118,21 @@ namespace Breadcrumb
         {
             InitializeComponent();
 
-            // Event fired the moment contentview is displayed
+            // Event fired the moment ContentView is displayed
             Device.BeginInvokeOnMainThread(() =>
             {
-                List<Page> pageTitles = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title)).ToList();
-                Page lastPage = pageTitles?.LastOrDefault();
-                foreach (Page page in pageTitles)
-                {
-                    IsVisible = true;
+                // Get list of all pages in the NavigationStack that has a page title
+                List<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title)).ToList();
 
+                // If any pages, make the control visible
+                IsVisible = pages.Any();
+
+                // Get last page in stack
+                Page lastPage = pages?.LastOrDefault();
+
+                // Loop all pages
+                foreach (Page page in pages)
+                {
                     if (!page.Equals(lastPage))
                     {
                         // Create breadcrumb
@@ -140,9 +146,9 @@ namespace Breadcrumb
                         };
                         breadCrumb1.GestureRecognizers.Add(tapGesture);
 
-                        // Add breadcrumb and seperator to BreadCrumbContainer
+                        // Add breadcrumb and separator to BreadCrumbContainer
                         BreadCrumbContainer.Children.Add(breadCrumb1);
-                        BreadCrumbContainer.Children.Add(SeperatorCreator());
+                        BreadCrumbContainer.Children.Add(SeparatorCreator());
                         continue;
                     }
 
@@ -161,17 +167,14 @@ namespace Breadcrumb
             });
         }
 
+        /// <summary>
+        /// Creates a new Breadcrumb object
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="isLast"></param>
+        /// <returns></returns>
         private PancakeView BreadCrumbLabelCreator(Page page, bool isLast = false)
         {
-            // Create Label
-            Label label = new Label
-            {
-                Text = page.Title,
-                FontSize = 15,
-                TextColor = isLast ? LastBreadCrumbTextColor : TextColor,
-                VerticalTextAlignment = TextAlignment.Center
-            };
-
             // Create StackLayout to contain the label within a PancakeView
             StackLayout stackLayout = new StackLayout
             {
@@ -179,24 +182,32 @@ namespace Breadcrumb
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            // Add label to stacklayout
-            stackLayout.Children.Add(label);
+            // Create and Add label to StackLayout
+            stackLayout.Children.Add(new Label
+            {
+                Text = page.Title,
+                FontSize = 15,
+                TextColor = isLast ? LastBreadCrumbTextColor : TextColor,
+                VerticalTextAlignment = TextAlignment.Center
+            });
 
-            // Create PancakeView
+            // Create PancakeView, and add StackLayout containing the page title
             PancakeView pancakeView = new PancakeView
             {
                 Padding = 10,
                 CornerRadius = isLast ? LastBreadCrumbCornerRadius : CornerRadius,
-                BackgroundColor = isLast ? LastBreadCrumbBackgroundColor : BreadCrumbBackgroundColor
+                BackgroundColor = isLast ? LastBreadCrumbBackgroundColor : BreadCrumbBackgroundColor,
+                Content = stackLayout
             };
-
-            // Add StackLayout containing label to PancakeView
-            pancakeView.Content = stackLayout;
 
             return pancakeView;
         }
 
-        private Label SeperatorCreator()
+        /// <summary>
+        /// Creates a new Separator object
+        /// </summary>
+        /// <returns></returns>
+        private Label SeparatorCreator()
         {
             return new Label
             {
@@ -208,6 +219,11 @@ namespace Breadcrumb
             };
         }
 
+        /// <summary>
+        /// Animates item added to stack
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AnimatedStack_ChildAdded(object sender, ElementEventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
@@ -227,29 +243,37 @@ namespace Breadcrumb
             });
         }
 
+        /// <summary>
+        /// Navigates the user back to chosen page in the Navigation stack
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         private async Task GoBack(Page page)
         {
-            IEnumerable<Page> pageInStack = Navigation.NavigationStack.Where(x => x.Equals(page));
-            if (pageInStack != null)
+            // Check if page is still in Navigation Stack
+            if (Navigation.NavigationStack.Any(x => x.Equals(page)))
             {
                 // Get all pages after selected page
-                List<Page> test = Navigation.NavigationStack.SkipWhile(x => x != page).ToList();
+                List<Page> pages = Navigation.NavigationStack.SkipWhile(x => x != page).ToList();
 
                 // Remove chosen page
-                test.Remove(page);
+                pages.Remove(page);
 
-                // Remove last page - current page (popasync will remove this page)
-                test = test.Take(test.Count - 1).ToList();
+                // Remove last page - current page (PopAsync will remove this page)
+                pages = pages.Take(pages.Count - 1).ToList();
 
-                foreach (Page pageToRemove in test)
+                // Remove all pages after chosen page
+                foreach (Page pageToRemove in pages)
                 {
                     Navigation.RemovePage(pageToRemove);
                 }
 
+                // Remove current page
                 await Navigation.PopAsync();
             }
             else
             {
+                // PopToRoot triggered if chosen page is missing from navigation stack
                 await Navigation.PopToRootAsync();
             }
         }
