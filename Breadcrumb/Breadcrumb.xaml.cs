@@ -40,60 +40,60 @@ namespace Breadcrumb
             set => SetValue(CornerRadiusProperty, value);
         }
 
-        // BreadCrumbBackgroundColor
-        public static readonly BindableProperty BreadCrumbBackgroundColorProperty = BindableProperty.Create(
-            nameof(BreadCrumbBackgroundColor),
+        // BreadcrumbBackgroundColor
+        public static readonly BindableProperty BreadcrumbBackgroundColorProperty = BindableProperty.Create(
+            nameof(BreadcrumbBackgroundColor),
             typeof(Color),
             typeof(Breadcrumb),
             Color.Transparent,
             defaultBindingMode: BindingMode.OneWay);
 
-        public Color BreadCrumbBackgroundColor
+        public Color BreadcrumbBackgroundColor
         {
-            get => (Color)GetValue(BreadCrumbBackgroundColorProperty);
-            set => SetValue(BreadCrumbBackgroundColorProperty, value);
+            get => (Color)GetValue(BreadcrumbBackgroundColorProperty);
+            set => SetValue(BreadcrumbBackgroundColorProperty, value);
         }
 
-        // LastBreadCrumbTextColor
-        public static readonly BindableProperty LastBreadCrumbTextColorProperty = BindableProperty.Create(
-            nameof(LastBreadCrumbTextColor),
+        // LastBreadcrumbTextColor
+        public static readonly BindableProperty LastBreadcrumbTextColorProperty = BindableProperty.Create(
+            nameof(LastBreadcrumbTextColor),
             typeof(Color),
             typeof(Breadcrumb),
             Color.Black,
             defaultBindingMode: BindingMode.OneWay);
 
-        public Color LastBreadCrumbTextColor
+        public Color LastBreadcrumbTextColor
         {
-            get => (Color)GetValue(LastBreadCrumbTextColorProperty);
-            set => SetValue(LastBreadCrumbTextColorProperty, value);
+            get => (Color)GetValue(LastBreadcrumbTextColorProperty);
+            set => SetValue(LastBreadcrumbTextColorProperty, value);
         }
 
-        // LastBreadCrumbCornerRadius
-        public static readonly BindableProperty LastBreadCrumbCornerRadiusProperty = BindableProperty.Create(
-            nameof(LastBreadCrumbCornerRadius),
+        // LastBreadcrumbCornerRadius
+        public static readonly BindableProperty LastBreadcrumbCornerRadiusProperty = BindableProperty.Create(
+            nameof(LastBreadcrumbCornerRadius),
             typeof(CornerRadius),
             typeof(Breadcrumb),
             new CornerRadius(10),
             defaultBindingMode: BindingMode.OneWay);
 
-        public CornerRadius LastBreadCrumbCornerRadius
+        public CornerRadius LastBreadcrumbCornerRadius
         {
-            get => (CornerRadius)GetValue(LastBreadCrumbCornerRadiusProperty);
-            set => SetValue(LastBreadCrumbCornerRadiusProperty, value);
+            get => (CornerRadius)GetValue(LastBreadcrumbCornerRadiusProperty);
+            set => SetValue(LastBreadcrumbCornerRadiusProperty, value);
         }
 
-        // LastBreadCrumbBackgroundColor
-        public static readonly BindableProperty LastBreadCrumbBackgroundColorProperty = BindableProperty.Create(
-            nameof(LastBreadCrumbBackgroundColor),
+        // LastBreadcrumbBackgroundColor
+        public static readonly BindableProperty LastBreadcrumbBackgroundColorProperty = BindableProperty.Create(
+            nameof(LastBreadcrumbBackgroundColor),
             typeof(Color),
             typeof(Breadcrumb),
             Color.Transparent,
             defaultBindingMode: BindingMode.OneWay);
 
-        public Color LastBreadCrumbBackgroundColor
+        public Color LastBreadcrumbBackgroundColor
         {
-            get => (Color)GetValue(LastBreadCrumbBackgroundColorProperty);
-            set => SetValue(LastBreadCrumbBackgroundColorProperty, value);
+            get => (Color)GetValue(LastBreadcrumbBackgroundColorProperty);
+            set => SetValue(LastBreadcrumbBackgroundColorProperty, value);
         }
 
         // AnimationSpeed
@@ -203,7 +203,7 @@ namespace Breadcrumb
             {
                 Text = page.Title,
                 FontSize = 15,
-                TextColor = isLast ? LastBreadCrumbTextColor : TextColor,
+                TextColor = isLast ? LastBreadcrumbTextColor : TextColor,
                 VerticalTextAlignment = TextAlignment.Center
             });
 
@@ -211,8 +211,8 @@ namespace Breadcrumb
             return new PancakeView
             {
                 Padding = 10,
-                CornerRadius = isLast ? LastBreadCrumbCornerRadius : CornerRadius,
-                BackgroundColor = isLast ? LastBreadCrumbBackgroundColor : BreadCrumbBackgroundColor,
+                CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
+                BackgroundColor = isLast ? LastBreadcrumbBackgroundColor : BreadcrumbBackgroundColor,
                 Content = stackLayout
             };
         }
