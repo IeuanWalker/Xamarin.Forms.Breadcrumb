@@ -2,14 +2,14 @@
 <ContentPage x:Class="DemoApp.Pages.BasePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Breadcrumb;assembly=Breadcrumb"
+             xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Breadcrumb"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
     <ContentPage.Content>
         <StackLayout>
             <!-- Breadcrumb -->
-            <controls:Breadcrumb Padding="15" VerticalOptions="Start" />
+            <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start" />
 
             <!-- Page content -->
             <StackLayout x:Name="BaseContent"
