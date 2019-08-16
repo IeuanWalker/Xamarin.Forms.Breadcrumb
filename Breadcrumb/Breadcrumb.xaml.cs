@@ -110,6 +110,20 @@ namespace Breadcrumb
             set => SetValue(AnimationSpeedProperty, value);
         }
 
+        // IsNavigationEnabled
+        public static readonly BindableProperty IsNavigationEnabledProperty = BindableProperty.Create(
+            nameof(IsNavigationEnabled),
+            typeof(bool),
+            typeof(Breadcrumb),
+            true,
+            defaultBindingMode: BindingMode.OneWay);
+
+        public bool IsNavigationEnabled
+        {
+            get => (bool)GetValue(IsNavigationEnabledProperty);
+            set => SetValue(IsNavigationEnabledProperty, value);
+        }
+
         // TODO: Seporator Icon, Image, Text
 
         #endregion Control properties
@@ -122,7 +136,7 @@ namespace Breadcrumb
             Device.BeginInvokeOnMainThread(() =>
             {
                 // Get list of all pages in the NavigationStack that has a page title
-                List<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title)).ToList();
+                IEnumerable<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title));
 
                 // If any pages, make the control visible
                 IsVisible = pages.Any();
@@ -139,12 +153,15 @@ namespace Breadcrumb
                         PancakeView breadCrumb1 = BreadCrumbLabelCreator(page);
 
                         // Add tap gesture
-                        TapGestureRecognizer tapGesture = new TapGestureRecognizer
+                        if (IsNavigationEnabled)
                         {
-                            CommandParameter = page,
-                            Command = new Command<Page>(async (item) => await GoBack(item))
-                        };
-                        breadCrumb1.GestureRecognizers.Add(tapGesture);
+                            TapGestureRecognizer tapGesture = new TapGestureRecognizer
+                            {
+                                CommandParameter = page,
+                                Command = new Command<Page>(async (item) => await GoBack(item))
+                            };
+                            breadCrumb1.GestureRecognizers.Add(tapGesture);
+                        }
 
                         // Add breadcrumb and separator to BreadCrumbContainer
                         BreadCrumbContainer.Children.Add(breadCrumb1);
@@ -172,7 +189,6 @@ namespace Breadcrumb
         /// </summary>
         /// <param name="page"></param>
         /// <param name="isLast"></param>
-        /// <returns></returns>
         private PancakeView BreadCrumbLabelCreator(Page page, bool isLast = false)
         {
             // Create StackLayout to contain the label within a PancakeView
@@ -192,21 +208,18 @@ namespace Breadcrumb
             });
 
             // Create PancakeView, and add StackLayout containing the page title
-            PancakeView pancakeView = new PancakeView
+            return new PancakeView
             {
                 Padding = 10,
                 CornerRadius = isLast ? LastBreadCrumbCornerRadius : CornerRadius,
                 BackgroundColor = isLast ? LastBreadCrumbBackgroundColor : BreadCrumbBackgroundColor,
                 Content = stackLayout
             };
-
-            return pancakeView;
         }
 
         /// <summary>
         /// Creates a new Separator object
         /// </summary>
-        /// <returns></returns>
         private Label SeparatorCreator()
         {
             return new Label
@@ -247,7 +260,6 @@ namespace Breadcrumb
         /// Navigates the user back to chosen page in the Navigation stack
         /// </summary>
         /// <param name="page"></param>
-        /// <returns></returns>
         private async Task GoBack(Page page)
         {
             // Check if page is still in Navigation Stack
