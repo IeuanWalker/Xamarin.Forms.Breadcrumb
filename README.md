@@ -1,10 +1,12 @@
 # Xamarin.Forms.Breadcrumb
 [![Nuget](https://img.shields.io/nuget/v/Xamarin.Forms.Breadcrumb) ![Nuget](https://img.shields.io/nuget/dt/Xamarin.Forms.Breadcrumb)](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb/1.0.0) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is a breadcrumb navigation controll that is complete automatic and uses the Navigation stack and page titles to generate the breadcrumbs.
+This is a breadcrumb navigation control that is complete automatic and uses the Navigation stack and page titles to generate the breadcrumbs.
 
 The animation for the control is base on this article - [A Cool Breadcrumbs Bar with Xamarin Forms Animations…](https://theconfuzedsourcecode.wordpress.com/2017/02/04/a-cool-breadcrumbs-bar-with-xamarin-forms-animations/)
 Also incorporated [Xamarin.Forms.Pancake](https://github.com/sthewissen/Xamarin.Forms.PancakeView) for more customisation options.
+
+![Example gif](https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/blob/master/Example.gif)
 
 ## How to use it?
 Install the [Nuget](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb/1.0.0) into your shared project project 
