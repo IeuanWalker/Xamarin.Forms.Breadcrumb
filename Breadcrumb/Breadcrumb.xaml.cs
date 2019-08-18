@@ -17,8 +17,7 @@ namespace Breadcrumb
             nameof(TextColor),
             typeof(Color),
             typeof(Breadcrumb),
-            Color.Black,
-            defaultBindingMode: BindingMode.OneWay);
+            Color.Black);
 
         public Color TextColor
         {
@@ -31,8 +30,7 @@ namespace Breadcrumb
             nameof(CornerRadius),
             typeof(CornerRadius),
             typeof(Breadcrumb),
-            new CornerRadius(10),
-            defaultBindingMode: BindingMode.OneWay);
+            new CornerRadius(10));
 
         public CornerRadius CornerRadius
         {
@@ -45,8 +43,7 @@ namespace Breadcrumb
             nameof(BreadcrumbBackgroundColor),
             typeof(Color),
             typeof(Breadcrumb),
-            Color.Transparent,
-            defaultBindingMode: BindingMode.OneWay);
+            Color.Transparent);
 
         public Color BreadcrumbBackgroundColor
         {
@@ -59,8 +56,7 @@ namespace Breadcrumb
             nameof(LastBreadcrumbTextColor),
             typeof(Color),
             typeof(Breadcrumb),
-            Color.Black,
-            defaultBindingMode: BindingMode.OneWay);
+            Color.Black);
 
         public Color LastBreadcrumbTextColor
         {
@@ -73,8 +69,7 @@ namespace Breadcrumb
             nameof(LastBreadcrumbCornerRadius),
             typeof(CornerRadius),
             typeof(Breadcrumb),
-            new CornerRadius(10),
-            defaultBindingMode: BindingMode.OneWay);
+            new CornerRadius(10));
 
         public CornerRadius LastBreadcrumbCornerRadius
         {
@@ -87,8 +82,7 @@ namespace Breadcrumb
             nameof(LastBreadcrumbBackgroundColor),
             typeof(Color),
             typeof(Breadcrumb),
-            Color.Transparent,
-            defaultBindingMode: BindingMode.OneWay);
+            Color.Transparent);
 
         public Color LastBreadcrumbBackgroundColor
         {
@@ -101,8 +95,7 @@ namespace Breadcrumb
             nameof(AnimationSpeed),
             typeof(uint),
             typeof(Breadcrumb),
-            (uint)800,
-            defaultBindingMode: BindingMode.OneWay);
+            (uint)800);
 
         public uint AnimationSpeed
         {
@@ -115,8 +108,7 @@ namespace Breadcrumb
             nameof(IsNavigationEnabled),
             typeof(bool),
             typeof(Breadcrumb),
-            true,
-            defaultBindingMode: BindingMode.OneWay);
+            true);
 
         public bool IsNavigationEnabled
         {
@@ -136,13 +128,13 @@ namespace Breadcrumb
             Device.BeginInvokeOnMainThread(() =>
             {
                 // Get list of all pages in the NavigationStack that has a page title
-                IEnumerable<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title));
+                List<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title)).ToList();
 
                 // If any pages, make the control visible
                 IsVisible = pages.Any();
 
                 // Get last page in stack
-                Page lastPage = pages?.LastOrDefault();
+                Page lastPage = pages.LastOrDefault();
 
                 // Loop all pages
                 foreach (Page page in pages)
@@ -244,11 +236,11 @@ namespace Breadcrumb
                 double width = Application.Current.MainPage.Width;
 
                 Animation storyboard = new Animation();
-                Animation enterRight = new Animation(callback: d =>
+                Animation enterRight = new Animation(d =>
                 BreadCrumbContainer.Children.Last().TranslationX = d,
-                start: width,
-                end: 0,
-                easing: Easing.Linear);
+                width,
+                0,
+                Easing.Linear);
                 storyboard.Add(0, 1, enterRight);
                 storyboard.Commit(
                 BreadCrumbContainer.Children.Last(),
