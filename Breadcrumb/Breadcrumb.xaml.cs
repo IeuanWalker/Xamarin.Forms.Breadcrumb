@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.PancakeView;
 using Xamarin.Forms.Xaml;
 
-namespace Breadcrumb
+namespace Xamarin.Forms.Breadcrumb
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Breadcrumb : ContentView
@@ -116,7 +114,7 @@ namespace Breadcrumb
             set => SetValue(IsNavigationEnabledProperty, value);
         }
 
-        // TODO: Seporator Icon, Image, Text
+        // TODO: Separator Icon, Image, Text
 
         #endregion Control properties
 
@@ -127,13 +125,13 @@ namespace Breadcrumb
             // Event fired the moment ContentView is displayed
             Device.BeginInvokeOnMainThread(() =>
             {
-                // Get list of all pages in the NavigationStack that has a page title
+                // Get list of all pages in the NavigationStack that has a selectedPage title
                 List<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title)).ToList();
 
                 // If any pages, make the control visible
                 IsVisible = pages.Any();
 
-                // Get last page in stack
+                // Get last selectedPage in stack
                 Page lastPage = pages.LastOrDefault();
 
                 // Loop all pages
@@ -142,7 +140,7 @@ namespace Breadcrumb
                     if (!page.Equals(lastPage))
                     {
                         // Create breadcrumb
-                        PancakeView breadCrumb1 = BreadCrumbLabelCreator(page);
+                        PancakeView.PancakeView breadCrumb1 = BreadCrumbLabelCreator(page);
 
                         // Add tap gesture
                         if (IsNavigationEnabled)
@@ -164,10 +162,10 @@ namespace Breadcrumb
                     // Add ChildAdded event to trigger animation
                     BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
 
-                    // Create page title label
-                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true);
+                    // Create selectedPage title label
+                    PancakeView.PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true);
 
-                    // Move BreadCrumb of page to start the animation
+                    // Move BreadCrumb of selectedPage to start the animation
                     breadCrumb2.TranslationX = Application.Current.MainPage.Width;
 
                     // Add breadcrumb to container
@@ -181,7 +179,7 @@ namespace Breadcrumb
         /// </summary>
         /// <param name="page"></param>
         /// <param name="isLast"></param>
-        private PancakeView BreadCrumbLabelCreator(Page page, bool isLast = false)
+        private PancakeView.PancakeView BreadCrumbLabelCreator(Page page, bool isLast = false)
         {
             // Create StackLayout to contain the label within a PancakeView
             StackLayout stackLayout = new StackLayout
@@ -199,8 +197,8 @@ namespace Breadcrumb
                 VerticalTextAlignment = TextAlignment.Center
             });
 
-            // Create PancakeView, and add StackLayout containing the page title
-            return new PancakeView
+            // Create PancakeView, and add StackLayout containing the selectedPage title
+            return new PancakeView.PancakeView
             {
                 Padding = 10,
                 CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
@@ -237,49 +235,50 @@ namespace Breadcrumb
 
                 Animation storyboard = new Animation();
                 Animation enterRight = new Animation(d =>
-                BreadCrumbContainer.Children.Last().TranslationX = d,
-                width,
-                0,
-                Easing.Linear);
+                        BreadCrumbContainer.Children.Last().TranslationX = d,
+                    width,
+                    0,
+                    Easing.Linear
+                );
                 storyboard.Add(0, 1, enterRight);
                 storyboard.Commit(
-                BreadCrumbContainer.Children.Last(),
-                "RightToLeftAnimation", length: AnimationSpeed);
+                    BreadCrumbContainer.Children.Last(),
+                    "RightToLeftAnimation", length: AnimationSpeed
+                );
             });
         }
 
         /// <summary>
-        /// Navigates the user back to chosen page in the Navigation stack
+        /// Navigates the user back to chosen selectedPage in the Navigation stack
         /// </summary>
-        /// <param name="page"></param>
-        private async Task GoBack(Page page)
+        /// <param name="selectedPage"></param>
+        private async Task GoBack(Page selectedPage)
         {
-            // Check if page is still in Navigation Stack
-            if (Navigation.NavigationStack.Any(x => x.Equals(page)))
+            // Check if selectedPage is still in Navigation Stack
+            if (!Navigation.NavigationStack.Any(x => x.Equals(selectedPage)))
             {
-                // Get all pages after selected page
-                List<Page> pages = Navigation.NavigationStack.SkipWhile(x => x != page).ToList();
-
-                // Remove chosen page
-                pages.Remove(page);
-
-                // Remove last page - current page (PopAsync will remove this page)
-                pages = pages.Take(pages.Count - 1).ToList();
-
-                // Remove all pages after chosen page
-                foreach (Page pageToRemove in pages)
-                {
-                    Navigation.RemovePage(pageToRemove);
-                }
-
-                // Remove current page
-                await Navigation.PopAsync();
-            }
-            else
-            {
-                // PopToRoot triggered if chosen page is missing from navigation stack
+                // PopToRoot triggered if selectedPage is missing from navigation stack
                 await Navigation.PopToRootAsync();
+                return;
             }
+
+            // Get all pages after and including selectedPage
+            List<Page> pages = Navigation.NavigationStack.SkipWhile(x => x != selectedPage).ToList();
+
+            // Remove selectedPage
+            pages.Remove(selectedPage);
+
+            // Remove current page (this will be removed with a PopAsync after all other relevant pages are removed)
+            pages = pages.Take(pages.Count - 1).ToList();
+
+            // Remove all pages left in list (i.e. all pages after selectedPage, minus the current page)
+            foreach (Page page in pages)
+            {
+                Navigation.RemovePage(page);
+            }
+
+            // Remove current page
+            await Navigation.PopAsync();
         }
     }
 }
