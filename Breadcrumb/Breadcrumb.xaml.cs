@@ -127,14 +127,9 @@ namespace Breadcrumb
         // TODO: Separator Icon, Image, Text
 
         #endregion Control properties
-
-        private readonly INavigation _nav;
-
         public Breadcrumb()
         {
             InitializeComponent();
-
-            _nav = Navigation;
 
             // Event fired the moment ContentView is displayed
             Device.BeginInvokeOnMainThread(() =>
@@ -267,45 +262,31 @@ namespace Breadcrumb
         /// <param name="selectedPage"></param>
         private async Task GoBack(Page selectedPage)
         {
-            System.Console.WriteLine($"{nameof(GoBack)} Clicked");
             // Check if selectedPage is still in Navigation Stack
-            if (!_nav.NavigationStack.Any(x => x.Equals(selectedPage)))
+            if (!Navigation.NavigationStack.Any(x => x == selectedPage))
             {
-                System.Console.WriteLine("Page not in stack");
                 // PopToRoot triggered if selectedPage is missing from navigation stack
-                await _nav.PopToRootAsync();
-                System.Console.WriteLine("Pop to root");
+                await Navigation.PopToRootAsync();
                 return;
             }
 
-            System.Console.WriteLine("Page in stack");
             // Get all pages after and including selectedPage
-            List<Page> pages = _nav.NavigationStack.SkipWhile(x => x != selectedPage).ToList();
+            List<Page> pages = Navigation.NavigationStack.SkipWhile(x => x != selectedPage).ToList();
 
-            System.Console.WriteLine("List of pages after selected page -");
-            pages.ForEach(x => System.Console.WriteLine(x.Title));
             // Remove selectedPage
             pages.Remove(selectedPage);
-
-            System.Console.WriteLine("Selected page removed");
 
             // Remove current page (this will be removed with a PopAsync after all other relevant pages are removed)
             pages = pages.Take(pages.Count - 1).ToList();
 
-            System.Console.WriteLine("Current page removed");
-
             // Remove all pages left in list (i.e. all pages after selectedPage, minus the current page)
             foreach (Page page in pages)
             {
-                _nav.RemovePage(page);
+                Navigation.RemovePage(page);
             }
 
-            System.Console.WriteLine("Pages inbetween selectedPage and CurrentPage removed");
-
             // Remove current page
-            await _nav.PopAsync();
-
-            System.Console.WriteLine("Popasync");
+            await Navigation.PopAsync();
         }
     }
 }
