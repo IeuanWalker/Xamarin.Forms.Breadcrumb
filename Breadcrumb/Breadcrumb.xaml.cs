@@ -15,7 +15,8 @@ namespace Xamarin.Forms.Breadcrumb
             nameof(TextColor),
             typeof(Color),
             typeof(Breadcrumb),
-            Color.Black);
+            Color.Black,
+            defaultBindingMode: BindingMode.OneWay);
 
         public Color TextColor
         {
@@ -28,7 +29,8 @@ namespace Xamarin.Forms.Breadcrumb
             nameof(CornerRadius),
             typeof(CornerRadius),
             typeof(Breadcrumb),
-            new CornerRadius(10));
+            new CornerRadius(10),
+            defaultBindingMode: BindingMode.OneWay);
 
         public CornerRadius CornerRadius
         {
@@ -41,7 +43,8 @@ namespace Xamarin.Forms.Breadcrumb
             nameof(BreadcrumbBackgroundColor),
             typeof(Color),
             typeof(Breadcrumb),
-            Color.Transparent);
+            Color.Transparent,
+            defaultBindingMode: BindingMode.OneWay);
 
         public Color BreadcrumbBackgroundColor
         {
@@ -54,7 +57,8 @@ namespace Xamarin.Forms.Breadcrumb
             nameof(LastBreadcrumbTextColor),
             typeof(Color),
             typeof(Breadcrumb),
-            Color.Black);
+            Color.Black,
+            defaultBindingMode: BindingMode.OneWay);
 
         public Color LastBreadcrumbTextColor
         {
@@ -67,7 +71,8 @@ namespace Xamarin.Forms.Breadcrumb
             nameof(LastBreadcrumbCornerRadius),
             typeof(CornerRadius),
             typeof(Breadcrumb),
-            new CornerRadius(10));
+            new CornerRadius(10),
+            defaultBindingMode: BindingMode.OneWay);
 
         public CornerRadius LastBreadcrumbCornerRadius
         {
@@ -80,7 +85,8 @@ namespace Xamarin.Forms.Breadcrumb
             nameof(LastBreadcrumbBackgroundColor),
             typeof(Color),
             typeof(Breadcrumb),
-            Color.Transparent);
+            Color.Transparent,
+            defaultBindingMode: BindingMode.OneWay);
 
         public Color LastBreadcrumbBackgroundColor
         {
@@ -93,7 +99,8 @@ namespace Xamarin.Forms.Breadcrumb
             nameof(AnimationSpeed),
             typeof(uint),
             typeof(Breadcrumb),
-            (uint)800);
+            (uint)800,
+            defaultBindingMode: BindingMode.OneWay);
 
         public uint AnimationSpeed
         {
@@ -106,7 +113,8 @@ namespace Xamarin.Forms.Breadcrumb
             nameof(IsNavigationEnabled),
             typeof(bool),
             typeof(Breadcrumb),
-            true);
+            true,
+            defaultBindingMode: BindingMode.OneWay);
 
         public bool IsNavigationEnabled
         {
@@ -235,11 +243,10 @@ namespace Xamarin.Forms.Breadcrumb
 
                 Animation storyboard = new Animation();
                 Animation enterRight = new Animation(d =>
-                        BreadCrumbContainer.Children.Last().TranslationX = d,
-                    width,
-                    0,
-                    Easing.Linear
-                );
+                BreadCrumbContainer.Children.Last().TranslationX = d,
+                width,
+                0,
+                Easing.Linear);
                 storyboard.Add(0, 1, enterRight);
                 storyboard.Commit(
                     BreadCrumbContainer.Children.Last(),
