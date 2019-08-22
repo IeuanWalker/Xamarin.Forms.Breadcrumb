@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
+using Xamarin.Forms.PancakeView;
 using Xamarin.Forms.Xaml;
 
-namespace Xamarin.Forms.Breadcrumb
+namespace Breadcrumb
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Breadcrumb : ContentView
@@ -148,7 +150,7 @@ namespace Xamarin.Forms.Breadcrumb
                     if (!page.Equals(lastPage))
                     {
                         // Create breadcrumb
-                        PancakeView.PancakeView breadCrumb1 = BreadCrumbLabelCreator(page);
+                       PancakeView breadCrumb1 = BreadCrumbLabelCreator(page);
 
                         // Add tap gesture
                         if (IsNavigationEnabled)
@@ -171,7 +173,7 @@ namespace Xamarin.Forms.Breadcrumb
                     BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
 
                     // Create selectedPage title label
-                    PancakeView.PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true);
+                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true);
 
                     // Move BreadCrumb of selectedPage to start the animation
                     breadCrumb2.TranslationX = Application.Current.MainPage.Width;
@@ -187,7 +189,7 @@ namespace Xamarin.Forms.Breadcrumb
         /// </summary>
         /// <param name="page"></param>
         /// <param name="isLast"></param>
-        private PancakeView.PancakeView BreadCrumbLabelCreator(Page page, bool isLast = false)
+        private PancakeView BreadCrumbLabelCreator(Page page, bool isLast = false)
         {
             // Create StackLayout to contain the label within a PancakeView
             StackLayout stackLayout = new StackLayout
@@ -206,7 +208,7 @@ namespace Xamarin.Forms.Breadcrumb
             });
 
             // Create PancakeView, and add StackLayout containing the selectedPage title
-            return new PancakeView.PancakeView
+            return new PancakeView
             {
                 Padding = 10,
                 CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
