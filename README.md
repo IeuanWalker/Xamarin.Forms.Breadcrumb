@@ -10,9 +10,9 @@ Also incorporated [Xamarin.Forms.Pancake](https://github.com/sthewissen/Xamarin.
 ![Example gif](https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/blob/master/Example.gif)
 
 ## How to use it?
-Install the [NuGet package](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb/1.0.0) into your shared project project 
+Install the [NuGet package](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb) into your shared project project 
 ```
-Install-Package Xamarin.Forms.Breadcrumb -Version 1.0.4
+Install-Package Xamarin.Forms.Breadcrumb -Version 2.0.0
 ```
 
 To add to a page the first thing we need to do is tell our XAML page where it can find the Breadcrumb control, which is done by adding the following attribute to our ContentPage:
@@ -21,7 +21,7 @@ To add to a page the first thing we need to do is tell our XAML page where it ca
 <ContentPage x:Class="DemoApp.Pages.BasePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:breadcrumb="clr-namespace:Xamarin.Forms.Breadcrumb;assembly=Xamarin.Forms.Breadcrumb"
+             xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Xamarin.Forms.Breadcrumb"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
