@@ -128,9 +128,13 @@ namespace Breadcrumb
 
         #endregion Control properties
 
+        private readonly INavigation _nav;
+
         public Breadcrumb()
         {
             InitializeComponent();
+
+            _nav = Navigation;
 
             // Event fired the moment ContentView is displayed
             Device.BeginInvokeOnMainThread(() =>
@@ -265,18 +269,18 @@ namespace Breadcrumb
         {
             System.Console.WriteLine($"{nameof(GoBack)} Clicked");
             // Check if selectedPage is still in Navigation Stack
-            if (!Navigation.NavigationStack.Any(x => x.Equals(selectedPage)))
+            if (!_nav.NavigationStack.Any(x => x.Equals(selectedPage)))
             {
                 System.Console.WriteLine("Page not in stack");
                 // PopToRoot triggered if selectedPage is missing from navigation stack
-                await Navigation.PopToRootAsync();
+                await _nav.PopToRootAsync();
                 System.Console.WriteLine("Pop to root");
                 return;
             }
 
             System.Console.WriteLine("Page in stack");
             // Get all pages after and including selectedPage
-            List<Page> pages = Navigation.NavigationStack.SkipWhile(x => x != selectedPage).ToList();
+            List<Page> pages = _nav.NavigationStack.SkipWhile(x => x != selectedPage).ToList();
 
             System.Console.WriteLine("List of pages after selected page -");
             pages.ForEach(x => System.Console.WriteLine(x.Title));
@@ -293,13 +297,13 @@ namespace Breadcrumb
             // Remove all pages left in list (i.e. all pages after selectedPage, minus the current page)
             foreach (Page page in pages)
             {
-                Navigation.RemovePage(page);
+                _nav.RemovePage(page);
             }
 
             System.Console.WriteLine("Pages inbetween selectedPage and CurrentPage removed");
 
             // Remove current page
-            await Navigation.PopAsync();
+            await _nav.PopAsync();
 
             System.Console.WriteLine("Popasync");
         }
