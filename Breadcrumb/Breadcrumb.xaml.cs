@@ -139,7 +139,7 @@ namespace Breadcrumb
                 List<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title)).ToList();
 
                 // If any pages, make the control visible
-                IsVisible = pages.Any();
+                IsVisible = pages.Count > 0;
 
                 // Get last selectedPage in stack
                 Page lastPage = pages.LastOrDefault();
@@ -263,22 +263,32 @@ namespace Breadcrumb
         /// <param name="selectedPage"></param>
         private async Task GoBack(Page selectedPage)
         {
+            System.Console.WriteLine($"{nameof(GoBack)} Clicked");
             // Check if selectedPage is still in Navigation Stack
             if (!Navigation.NavigationStack.Any(x => x.Equals(selectedPage)))
             {
+                System.Console.WriteLine("Page not in stack");
                 // PopToRoot triggered if selectedPage is missing from navigation stack
                 await Navigation.PopToRootAsync();
+                System.Console.WriteLine("Pop to root");
                 return;
             }
 
+            System.Console.WriteLine("Page in stack");
             // Get all pages after and including selectedPage
             List<Page> pages = Navigation.NavigationStack.SkipWhile(x => x != selectedPage).ToList();
 
+            System.Console.WriteLine("List of pages after selected page -");
+            pages.ForEach(x => System.Console.WriteLine(x.Title));
             // Remove selectedPage
             pages.Remove(selectedPage);
 
+            System.Console.WriteLine("Selected page removed");
+
             // Remove current page (this will be removed with a PopAsync after all other relevant pages are removed)
             pages = pages.Take(pages.Count - 1).ToList();
+
+            System.Console.WriteLine("Current page removed");
 
             // Remove all pages left in list (i.e. all pages after selectedPage, minus the current page)
             foreach (Page page in pages)
@@ -286,8 +296,12 @@ namespace Breadcrumb
                 Navigation.RemovePage(page);
             }
 
+            System.Console.WriteLine("Pages inbetween selectedPage and CurrentPage removed");
+
             // Remove current page
             await Navigation.PopAsync();
+
+            System.Console.WriteLine("Popasync");
         }
     }
 }
