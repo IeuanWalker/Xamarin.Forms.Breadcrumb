@@ -157,7 +157,7 @@ namespace Breadcrumb
                             TapGestureRecognizer tapGesture = new TapGestureRecognizer
                             {
                                 CommandParameter = page,
-                                Command = new Command<Page>(async (item) => await GoBack(item))
+                                Command = new Command<Page>(async (item) => await GoBack(item).ConfigureAwait(false))
                             };
                             breadCrumb1.GestureRecognizers.Add(tapGesture);
                         }
