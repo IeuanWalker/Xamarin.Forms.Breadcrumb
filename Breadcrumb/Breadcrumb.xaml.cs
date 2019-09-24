@@ -12,6 +12,21 @@ namespace Breadcrumb
     {
         #region Control properties
 
+        // Scrollbar Visibility
+        public static readonly BindableProperty ScrollBarVisibilityProperty = BindableProperty.Create(
+            nameof(ScrollBarVisibility),
+            typeof(ScrollBarVisibility),
+            typeof(Breadcrumb),
+            ScrollBarVisibility.Never,
+            defaultBindingMode: BindingMode.OneWay);
+
+        public ScrollBarVisibility ScrollBarVisibility
+        {
+            get => (ScrollBarVisibility)GetValue(ScrollBarVisibilityProperty);
+            set => SetValue(ScrollBarVisibilityProperty, value);
+        }
+
+
         // Text Color
         public static readonly BindableProperty TextColorProperty = BindableProperty.Create(
             nameof(TextColor),

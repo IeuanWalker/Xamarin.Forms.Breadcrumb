@@ -2,9 +2,11 @@
 <ContentView x:Class="Breadcrumb.Breadcrumb"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="this"
              IsVisible="False">
     <ContentView.Content>
         <ScrollView x:Name="BreadCrumbsScrollView"
+                    HorizontalScrollBarVisibility="{Binding ScrollBarVisibility, Source={x:Reference this}}"
                     Orientation="Horizontal"
                     VerticalOptions="StartAndExpand">
             <StackLayout x:Name="BreadCrumbContainer"
