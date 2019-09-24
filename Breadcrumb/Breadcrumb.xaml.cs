@@ -132,7 +132,7 @@ namespace Breadcrumb
             InitializeComponent();
 
             // Event fired the moment ContentView is displayed
-            Device.BeginInvokeOnMainThread(() =>
+            Device.BeginInvokeOnMainThread(async () =>
             {
                 // Get list of all pages in the NavigationStack that has a selectedPage title
                 List<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title)).ToList();
@@ -168,6 +168,8 @@ namespace Breadcrumb
                         continue;
                     }
 
+                    
+
                     // Add ChildAdded event to trigger animation
                     BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
 
@@ -177,8 +179,15 @@ namespace Breadcrumb
                     // Move BreadCrumb of selectedPage to start the animation
                     breadCrumb2.TranslationX = Application.Current.MainPage.Width;
 
+                    // Scroll to end of control
+                    await Task.Delay(10);
+                    await BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer, ScrollToPosition.End, false);
+
                     // Add breadcrumb to container
                     BreadCrumbContainer.Children.Add(breadCrumb2);
+
+                    // Scroll to last breadcrumb
+                    await BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer, ScrollToPosition.End, AnimationSpeed != 0);
                 }
             });
         }

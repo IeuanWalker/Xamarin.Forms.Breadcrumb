@@ -5,5 +5,13 @@
                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:pages="clr-namespace:DemoApp.Pages"
-                Title="Test 3"
-                mc:Ignorable="d" />
+                Title="Test 3 long page name test"
+                mc:Ignorable="d">
+    <pages:BasePage.BasePageContent>
+        <Button Margin="25"
+                Clicked="Button_Clicked"
+                HorizontalOptions="CenterAndExpand"
+                Text="(loop) Got to page 1"
+                VerticalOptions="Center" />
+    </pages:BasePage.BasePageContent>
+</pages:BasePage>
