@@ -206,7 +206,11 @@ namespace Breadcrumb
 
                         // Add breadcrumb and separator to BreadCrumbContainer
                         BreadCrumbContainer.Children.Add(breadCrumb1);
-                        BreadCrumbContainer.Children.Add(new Image { Source = Separator });
+                        BreadCrumbContainer.Children.Add(new Image
+                        {
+                            Source = Separator, 
+                            VerticalOptions = LayoutOptions.Center
+                        });
                         continue;
                     }                    
 
@@ -254,7 +258,8 @@ namespace Breadcrumb
             {
                 stackLayout.Children.Add(new Image
                 {
-                    Source = FirstBreadCrumb
+                    Source = FirstBreadCrumb,
+                    VerticalOptions = LayoutOptions.Center
                 });
             }
             else
@@ -267,12 +272,13 @@ namespace Breadcrumb
                     VerticalTextAlignment = TextAlignment.Center
                 });
             }
-            
+
 
             // Create PancakeView, and add StackLayout containing the selectedPage title
             return new PancakeView
             {
                 Padding = 10,
+                VerticalOptions = LayoutOptions.Center,
                 CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
                 BackgroundColor = isLast ? LastBreadcrumbBackgroundColor : BreadcrumbBackgroundColor,
                 Content = stackLayout
