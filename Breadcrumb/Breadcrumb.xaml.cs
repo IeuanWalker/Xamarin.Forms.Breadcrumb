@@ -175,7 +175,7 @@ namespace Breadcrumb
             // Create StackLayout to contain the label within a PancakeView
             StackLayout stackLayout = new StackLayout
             {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
