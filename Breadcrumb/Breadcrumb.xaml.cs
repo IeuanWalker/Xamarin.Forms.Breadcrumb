@@ -26,6 +26,20 @@ namespace Breadcrumb
             set => SetValue(SeparatorProperty, value);
         }
 
+        // FirstBreadCrumb
+        public static readonly BindableProperty FirstBreadCrumbProperty = BindableProperty.Create(
+            nameof(FirstBreadCrumb),
+            typeof(ImageSource),
+            typeof(Breadcrumb),
+            null,
+            defaultBindingMode: BindingMode.OneWay);
+
+        public ImageSource FirstBreadCrumb
+        {
+            get => (ImageSource)GetValue(FirstBreadCrumbProperty);
+            set => SetValue(FirstBreadCrumbProperty, value);
+        }
+
         // Scrollbar Visibility
         public static readonly BindableProperty ScrollBarVisibilityProperty = BindableProperty.Create(
             nameof(ScrollBarVisibility),
@@ -168,6 +182,7 @@ namespace Breadcrumb
                 IsVisible = pages.Count > 0;
 
                 // Get last selectedPage in stack
+                Page firstPage = pages.FirstOrDefault();
                 Page lastPage = pages.LastOrDefault();
 
                 // Loop all pages
@@ -176,7 +191,7 @@ namespace Breadcrumb
                     if (!page.Equals(lastPage))
                     {
                         // Create breadcrumb
-                       PancakeView breadCrumb1 = BreadCrumbLabelCreator(page);
+                        PancakeView breadCrumb1 = BreadCrumbLabelCreator(page, false, page.Equals(firstPage));
 
                         // Add tap gesture
                         if (IsNavigationEnabled)
@@ -193,15 +208,13 @@ namespace Breadcrumb
                         BreadCrumbContainer.Children.Add(breadCrumb1);
                         BreadCrumbContainer.Children.Add(new Image { Source = Separator });
                         continue;
-                    }
-
-                    
+                    }                    
 
                     // Add ChildAdded event to trigger animation
                     BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
 
                     // Create selectedPage title label
-                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true);
+                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true, page.Equals(firstPage));
 
                     // Move BreadCrumb of selectedPage to start the animation
                     breadCrumb2.TranslationX = Application.Current.MainPage.Width;
@@ -219,12 +232,15 @@ namespace Breadcrumb
             });
         }
 
+
+
+
         /// <summary>
         /// Creates a new Breadcrumb object
         /// </summary>
         /// <param name="page"></param>
         /// <param name="isLast"></param>
-        private PancakeView BreadCrumbLabelCreator(Page page, bool isLast = false)
+        private PancakeView BreadCrumbLabelCreator(Page page, bool isLast, bool isFirst)
         {
             // Create StackLayout to contain the label within a PancakeView
             StackLayout stackLayout = new StackLayout
@@ -234,13 +250,24 @@ namespace Breadcrumb
             };
 
             // Create and Add label to StackLayout
-            stackLayout.Children.Add(new Label
+            if(isFirst && FirstBreadCrumb != null)
             {
-                Text = page.Title,
-                FontSize = 15,
-                TextColor = isLast ? LastBreadcrumbTextColor : TextColor,
-                VerticalTextAlignment = TextAlignment.Center
-            });
+                stackLayout.Children.Add(new Image
+                {
+                    Source = FirstBreadCrumb
+                });
+            }
+            else
+            {
+                stackLayout.Children.Add(new Label
+                {
+                    Text = page.Title,
+                    FontSize = 15,
+                    TextColor = isLast ? LastBreadcrumbTextColor : TextColor,
+                    VerticalTextAlignment = TextAlignment.Center
+                });
+            }
+            
 
             // Create PancakeView, and add StackLayout containing the selectedPage title
             return new PancakeView
