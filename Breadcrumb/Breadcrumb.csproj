@@ -42,8 +42,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.1.0.673156" />
-    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.1.5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.815419" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.2.1" />
   </ItemGroup>
 
 </Project>

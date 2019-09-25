@@ -12,6 +12,20 @@ namespace Breadcrumb
     {
         #region Control properties
 
+        // Separator
+        public static readonly BindableProperty SeparatorProperty = BindableProperty.Create(
+            nameof(Separator),
+            typeof(ImageSource),
+            typeof(Breadcrumb),
+            new FontImageSource { Glyph = " / ", Color = Color.Black, Size = 15, },
+            defaultBindingMode: BindingMode.OneWay);
+
+        public ImageSource Separator
+        {
+            get => (ImageSource)GetValue(SeparatorProperty);
+            set => SetValue(SeparatorProperty, value);
+        }
+
         // Scrollbar Visibility
         public static readonly BindableProperty ScrollBarVisibilityProperty = BindableProperty.Create(
             nameof(ScrollBarVisibility),
@@ -139,8 +153,6 @@ namespace Breadcrumb
             set => SetValue(IsNavigationEnabledProperty, value);
         }
 
-        // TODO: Separator Icon, Image, Text
-
         #endregion Control properties
         public Breadcrumb()
         {
@@ -179,7 +191,7 @@ namespace Breadcrumb
 
                         // Add breadcrumb and separator to BreadCrumbContainer
                         BreadCrumbContainer.Children.Add(breadCrumb1);
-                        BreadCrumbContainer.Children.Add(SeparatorCreator());
+                        BreadCrumbContainer.Children.Add(new Image { Source = Separator });
                         continue;
                     }
 
@@ -237,21 +249,6 @@ namespace Breadcrumb
                 CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
                 BackgroundColor = isLast ? LastBreadcrumbBackgroundColor : BreadcrumbBackgroundColor,
                 Content = stackLayout
-            };
-        }
-
-        /// <summary>
-        /// Creates a new Separator object
-        /// </summary>
-        private Label SeparatorCreator()
-        {
-            return new Label
-            {
-                Text = " / ",
-                FontSize = 15,
-                TextColor = TextColor,
-                VerticalTextAlignment = TextAlignment.Center,
-                FontAttributes = FontAttributes.Bold
             };
         }
 

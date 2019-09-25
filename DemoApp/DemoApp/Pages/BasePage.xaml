@@ -3,13 +3,35 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Xamarin.Forms.Breadcrumb"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d">
+             xmlns:icons="clr-namespace:DemoApp">
     <ContentPage.Content>
         <StackLayout>
             <!-- Breadcrumb -->
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start" />
+
+            <!-- FontImageSource -->
+            <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
+                <breadcrumb:Breadcrumb.Separator>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Glyph="{x:Static icons:IconFont.ChevronRight}"
+                                     Size="15"
+                                     Color="Red" />
+                </breadcrumb:Breadcrumb.Separator>
+            </breadcrumb:Breadcrumb>
+
+            <!-- UriImageSource -->
+            <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
+                <breadcrumb:Breadcrumb.Separator>
+                    <UriImageSource Uri="https://cdn.iconscout.com/icon/free/png-256/xamarin-4-599473.png" />
+                </breadcrumb:Breadcrumb.Separator>
+            </breadcrumb:Breadcrumb>
+
+            <!-- FileImageSource -->
+            <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
+                <breadcrumb:Breadcrumb.Separator>
+                    <FileImageSource File="exampleImage.png" />
+                </breadcrumb:Breadcrumb.Separator>
+            </breadcrumb:Breadcrumb>
 
             <!-- Page content -->
             <StackLayout x:Name="BaseContent"
