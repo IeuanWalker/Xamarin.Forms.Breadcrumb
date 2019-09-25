@@ -20,7 +20,7 @@
                 <breadcrumb:Breadcrumb.FirstBreadCrumb>
                     <FontImageSource FontFamily="{StaticResource FontAwesome}"
                                      Glyph="{x:Static icons:IconFont.Home}"
-                                     Size="15"
+                                     Size="35"
                                      Color="Red" />
                 </breadcrumb:Breadcrumb.FirstBreadCrumb>
             </breadcrumb:Breadcrumb>

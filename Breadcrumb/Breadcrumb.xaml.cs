@@ -13,13 +13,7 @@ namespace Breadcrumb
         #region Control properties
 
         // Separator
-        public static readonly BindableProperty SeparatorProperty = BindableProperty.Create(
-            nameof(Separator),
-            typeof(ImageSource),
-            typeof(Breadcrumb),
-            new FontImageSource { Glyph = " / ", Color = Color.Black, Size = 15, },
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty SeparatorProperty = BindableProperty.Create(nameof(Separator), typeof(ImageSource), typeof(Breadcrumb), new FontImageSource { Glyph = " / ", Color = Color.Black, Size = 15, });
         public ImageSource Separator
         {
             get => (ImageSource)GetValue(SeparatorProperty);
@@ -27,13 +21,7 @@ namespace Breadcrumb
         }
 
         // FirstBreadCrumb
-        public static readonly BindableProperty FirstBreadCrumbProperty = BindableProperty.Create(
-            nameof(FirstBreadCrumb),
-            typeof(ImageSource),
-            typeof(Breadcrumb),
-            null,
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty FirstBreadCrumbProperty = BindableProperty.Create(nameof(FirstBreadCrumb), typeof(ImageSource), typeof(Breadcrumb), null);
         public ImageSource FirstBreadCrumb
         {
             get => (ImageSource)GetValue(FirstBreadCrumbProperty);
@@ -41,28 +29,15 @@ namespace Breadcrumb
         }
 
         // Scrollbar Visibility
-        public static readonly BindableProperty ScrollBarVisibilityProperty = BindableProperty.Create(
-            nameof(ScrollBarVisibility),
-            typeof(ScrollBarVisibility),
-            typeof(Breadcrumb),
-            ScrollBarVisibility.Never,
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty ScrollBarVisibilityProperty = BindableProperty.Create(nameof(ScrollBarVisibility), typeof(ScrollBarVisibility), typeof(Breadcrumb), ScrollBarVisibility.Never);
         public ScrollBarVisibility ScrollBarVisibility
         {
             get => (ScrollBarVisibility)GetValue(ScrollBarVisibilityProperty);
             set => SetValue(ScrollBarVisibilityProperty, value);
         }
 
-
         // Text Color
-        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(
-            nameof(TextColor),
-            typeof(Color),
-            typeof(Breadcrumb),
-            Color.Black,
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(Breadcrumb), Color.Black);
         public Color TextColor
         {
             get => (Color)GetValue(TextColorProperty);
@@ -70,13 +45,7 @@ namespace Breadcrumb
         }
 
         // Corner radius
-        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(
-            nameof(CornerRadius),
-            typeof(CornerRadius),
-            typeof(Breadcrumb),
-            new CornerRadius(10),
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(CornerRadius), typeof(Breadcrumb), new CornerRadius(10));
         public CornerRadius CornerRadius
         {
             get => (CornerRadius)GetValue(CornerRadiusProperty);
@@ -84,13 +53,7 @@ namespace Breadcrumb
         }
 
         // BreadcrumbBackgroundColor
-        public static readonly BindableProperty BreadcrumbBackgroundColorProperty = BindableProperty.Create(
-            nameof(BreadcrumbBackgroundColor),
-            typeof(Color),
-            typeof(Breadcrumb),
-            Color.Transparent,
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty BreadcrumbBackgroundColorProperty = BindableProperty.Create(nameof(BreadcrumbBackgroundColor), typeof(Color), typeof(Breadcrumb), Color.Transparent);
         public Color BreadcrumbBackgroundColor
         {
             get => (Color)GetValue(BreadcrumbBackgroundColorProperty);
@@ -98,13 +61,7 @@ namespace Breadcrumb
         }
 
         // LastBreadcrumbTextColor
-        public static readonly BindableProperty LastBreadcrumbTextColorProperty = BindableProperty.Create(
-            nameof(LastBreadcrumbTextColor),
-            typeof(Color),
-            typeof(Breadcrumb),
-            Color.Black,
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty LastBreadcrumbTextColorProperty = BindableProperty.Create(nameof(LastBreadcrumbTextColor), typeof(Color), typeof(Breadcrumb), Color.Black);
         public Color LastBreadcrumbTextColor
         {
             get => (Color)GetValue(LastBreadcrumbTextColorProperty);
@@ -112,13 +69,7 @@ namespace Breadcrumb
         }
 
         // LastBreadcrumbCornerRadius
-        public static readonly BindableProperty LastBreadcrumbCornerRadiusProperty = BindableProperty.Create(
-            nameof(LastBreadcrumbCornerRadius),
-            typeof(CornerRadius),
-            typeof(Breadcrumb),
-            new CornerRadius(10),
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty LastBreadcrumbCornerRadiusProperty = BindableProperty.Create(nameof(LastBreadcrumbCornerRadius), typeof(CornerRadius), typeof(Breadcrumb), new CornerRadius(10));
         public CornerRadius LastBreadcrumbCornerRadius
         {
             get => (CornerRadius)GetValue(LastBreadcrumbCornerRadiusProperty);
@@ -126,13 +77,7 @@ namespace Breadcrumb
         }
 
         // LastBreadcrumbBackgroundColor
-        public static readonly BindableProperty LastBreadcrumbBackgroundColorProperty = BindableProperty.Create(
-            nameof(LastBreadcrumbBackgroundColor),
-            typeof(Color),
-            typeof(Breadcrumb),
-            Color.Transparent,
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty LastBreadcrumbBackgroundColorProperty = BindableProperty.Create(nameof(LastBreadcrumbBackgroundColor), typeof(Color), typeof(Breadcrumb), Color.Transparent);
         public Color LastBreadcrumbBackgroundColor
         {
             get => (Color)GetValue(LastBreadcrumbBackgroundColorProperty);
@@ -140,13 +85,7 @@ namespace Breadcrumb
         }
 
         // AnimationSpeed
-        public static readonly BindableProperty AnimationSpeedProperty = BindableProperty.Create(
-            nameof(AnimationSpeed),
-            typeof(uint),
-            typeof(Breadcrumb),
-            (uint)800,
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty AnimationSpeedProperty = BindableProperty.Create(nameof(AnimationSpeed), typeof(uint), typeof(Breadcrumb), (uint)800);
         public uint AnimationSpeed
         {
             get => (uint)GetValue(AnimationSpeedProperty);
@@ -154,13 +93,7 @@ namespace Breadcrumb
         }
 
         // IsNavigationEnabled
-        public static readonly BindableProperty IsNavigationEnabledProperty = BindableProperty.Create(
-            nameof(IsNavigationEnabled),
-            typeof(bool),
-            typeof(Breadcrumb),
-            true,
-            defaultBindingMode: BindingMode.OneWay);
-
+        public static readonly BindableProperty IsNavigationEnabledProperty = BindableProperty.Create(nameof(IsNavigationEnabled), typeof(bool), typeof(Breadcrumb), true);
         public bool IsNavigationEnabled
         {
             get => (bool)GetValue(IsNavigationEnabledProperty);
@@ -181,17 +114,13 @@ namespace Breadcrumb
                 // If any pages, make the control visible
                 IsVisible = pages.Count > 0;
 
-                // Get last selectedPage in stack
-                Page firstPage = pages.FirstOrDefault();
-                Page lastPage = pages.LastOrDefault();
-
                 // Loop all pages
                 foreach (Page page in pages)
                 {
-                    if (!page.Equals(lastPage))
+                    if (!page.Equals(pages.LastOrDefault()))
                     {
                         // Create breadcrumb
-                        PancakeView breadCrumb1 = BreadCrumbLabelCreator(page, false, page.Equals(firstPage));
+                        PancakeView breadCrumb1 = BreadCrumbLabelCreator(page, false, page.Equals(pages.FirstOrDefault()));
 
                         // Add tap gesture
                         if (IsNavigationEnabled)
@@ -218,7 +147,7 @@ namespace Breadcrumb
                     BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
 
                     // Create selectedPage title label
-                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true, page.Equals(firstPage));
+                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true, page.Equals(pages.FirstOrDefault()));
 
                     // Move BreadCrumb of selectedPage to start the animation
                     breadCrumb2.TranslationX = Application.Current.MainPage.Width;
@@ -236,9 +165,6 @@ namespace Breadcrumb
             });
         }
 
-
-
-
         /// <summary>
         /// Creates a new Breadcrumb object
         /// </summary>
@@ -249,7 +175,7 @@ namespace Breadcrumb
             // Create StackLayout to contain the label within a PancakeView
             StackLayout stackLayout = new StackLayout
             {
-                VerticalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
@@ -269,6 +195,7 @@ namespace Breadcrumb
                     Text = page.Title,
                     FontSize = 15,
                     TextColor = isLast ? LastBreadcrumbTextColor : TextColor,
+                    VerticalOptions = LayoutOptions.Center,
                     VerticalTextAlignment = TextAlignment.Center
                 });
             }
