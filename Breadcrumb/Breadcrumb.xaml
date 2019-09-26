@@ -8,10 +8,10 @@
         <ScrollView x:Name="BreadCrumbsScrollView"
                     HorizontalScrollBarVisibility="{Binding ScrollBarVisibility, Source={x:Reference this}}"
                     Orientation="Horizontal">
-            <FlexLayout x:Name="BreadCrumbContainer"
-                        Direction="Row"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Center" />
+            <StackLayout x:Name="BreadCrumbContainer"
+                         HorizontalOptions="FillAndExpand"
+                         Orientation="Horizontal"
+                         VerticalOptions="Center" />
         </ScrollView>
     </ContentView.Content>
 </ContentView>
