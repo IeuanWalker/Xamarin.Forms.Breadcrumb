@@ -219,29 +219,26 @@ namespace Breadcrumb
         /// <param name="e"></param>
         private void AnimatedStack_ChildAdded(object sender, ElementEventArgs e)
         {
-            Device.BeginInvokeOnMainThread(() =>
+            Device.BeginInvokeOnMainThread(async () =>
             {
                 // iOS scroll to end fix
                 if (Device.RuntimePlatform.Equals(Device.iOS))
                 {
-                    BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.End, false);
+                    await BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.MakeVisible, false);
                 }
-
-                Point point = BreadCrumbsScrollView.GetScrollPositionForElement(BreadCrumbContainer.Children.Last(), ScrollToPosition.End);
 
                 Animation lastBreadcrumbAnimation = new Animation
                 {
-                    { 0, 1, new Animation(_ => BreadCrumbContainer.Children.Last().TranslationX = _, Application.Current.MainPage.Width, 0, Easing.Linear) },
-                    { 0, 1, new Animation(_ => BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.End, true), BreadCrumbsScrollView.X, point.X - 6 )}
+                    { 0, 1, new Animation(_ => BreadCrumbContainer.Children.Last().TranslationX = _, Application.Current.MainPage.Width, 0, Easing.Linear) }
                 };
-               
-                lastBreadcrumbAnimation.Commit(this, nameof(lastBreadcrumbAnimation), 16, AnimationSpeed);
 
-                // iOS scroll to end fix
                 if (Device.RuntimePlatform.Equals(Device.iOS))
                 {
-                    BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.End, true);
+                    Point point = BreadCrumbsScrollView.GetScrollPositionForElement(BreadCrumbContainer.Children.Last(), ScrollToPosition.End);
+                    lastBreadcrumbAnimation.Add(0, 1, new Animation(_ => BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.MakeVisible, true), BreadCrumbsScrollView.X, point.X - 6));
                 }
+
+                lastBreadcrumbAnimation.Commit(this, nameof(lastBreadcrumbAnimation), 16, AnimationSpeed);
             });
         }
 
