@@ -137,11 +137,11 @@ namespace Breadcrumb
                         BreadCrumbContainer.Children.Add(breadCrumb1);
                         BreadCrumbContainer.Children.Add(new Image
                         {
-                            Source = Separator, 
+                            Source = Separator,
                             VerticalOptions = LayoutOptions.Center
                         });
                         continue;
-                    }                    
+                    }
 
                     // Add ChildAdded event to trigger animation
                     BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
@@ -180,7 +180,7 @@ namespace Breadcrumb
             };
 
             // Create and Add label to StackLayout
-            if(isFirst && FirstBreadCrumb != null)
+            if (isFirst && FirstBreadCrumb != null)
             {
                 stackLayout.Children.Add(new Image
                 {
@@ -221,19 +221,17 @@ namespace Breadcrumb
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                double width = Application.Current.MainPage.Width;
+                // iOS scroll to end fix
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.End, false);
+                }
+                Animation lastBreadcrumbAnimation = new Animation
+                {
+                    { 0, 1, new Animation(_ => BreadCrumbContainer.Children.Last().TranslationX = _, Application.Current.MainPage.Width, 0, Easing.Linear) }
+                };
 
-                Animation storyboard = new Animation();
-                Animation enterRight = new Animation(d =>
-                BreadCrumbContainer.Children.Last().TranslationX = d,
-                width,
-                0,
-                Easing.Linear);
-                storyboard.Add(0, 1, enterRight);
-                storyboard.Commit(
-                    BreadCrumbContainer.Children.Last(),
-                    "RightToLeftAnimation", length: AnimationSpeed
-                );
+                lastBreadcrumbAnimation.Commit(this, nameof(lastBreadcrumbAnimation), 16, AnimationSpeed);
             });
         }
 
