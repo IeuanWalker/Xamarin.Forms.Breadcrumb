@@ -5,36 +5,11 @@
              xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Xamarin.Forms.Breadcrumb"
              xmlns:icons="clr-namespace:DemoApp">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <!-- Test -->
-            <breadcrumb:Breadcrumb Grid.Row="0"
-                                   Padding="15"
-                                   BreadcrumbBackgroundColor="Green"
-                                   CornerRadius="6"
-                                   LastBreadcrumbBackgroundColor="DarkGreen"
-                                   LastBreadcrumbCornerRadius="6"
-                                   LastBreadcrumbTextColor="LightGreen"
-                                   TextColor="White"
-                                   VerticalOptions="Start">
-                <breadcrumb:Breadcrumb.Separator>
-                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
-                                     Glyph="{x:Static icons:IconFont.ChevronRight}"
-                                     Size="12"
-                                     Color="Red" />
-                </breadcrumb:Breadcrumb.Separator>
-            </breadcrumb:Breadcrumb>
-
+        <StackLayout>
             <!-- Breadcrumb -->
-            <breadcrumb:Breadcrumb Grid.Row="1"
-                                   Padding="15"
-                                   VerticalOptions="Start" />
+            <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start" />
 
             <!-- FontImageSource -->
-            <!--
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <FontImageSource FontFamily="{StaticResource FontAwesome}"
@@ -50,28 +25,24 @@
                 </breadcrumb:Breadcrumb.FirstBreadCrumb>
             </breadcrumb:Breadcrumb>
 
-            -->
             <!-- UriImageSource -->
-            <!--
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <UriImageSource Uri="https://cdn.iconscout.com/icon/free/png-256/xamarin-4-599473.png" />
                 </breadcrumb:Breadcrumb.Separator>
             </breadcrumb:Breadcrumb>
 
-            -->
             <!-- FileImageSource -->
-            <!--
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <FileImageSource File="exampleImage.png" />
                 </breadcrumb:Breadcrumb.Separator>
-            </breadcrumb:Breadcrumb>-->
+            </breadcrumb:Breadcrumb>
 
             <!-- Page content -->
             <StackLayout x:Name="BaseContent"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand" />
-        </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

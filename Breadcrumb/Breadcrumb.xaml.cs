@@ -226,12 +226,22 @@ namespace Breadcrumb
                 {
                     BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.End, false);
                 }
+
+                Point point = BreadCrumbsScrollView.GetScrollPositionForElement(BreadCrumbContainer.Children.Last(), ScrollToPosition.End);
+
                 Animation lastBreadcrumbAnimation = new Animation
                 {
-                    { 0, 1, new Animation(_ => BreadCrumbContainer.Children.Last().TranslationX = _, Application.Current.MainPage.Width, 0, Easing.Linear) }
+                    { 0, 1, new Animation(_ => BreadCrumbContainer.Children.Last().TranslationX = _, Application.Current.MainPage.Width, 0, Easing.Linear) },
+                    { 0, 1, new Animation(_ => BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.End, true), BreadCrumbsScrollView.X, point.X - 6 )}
                 };
-
+               
                 lastBreadcrumbAnimation.Commit(this, nameof(lastBreadcrumbAnimation), 16, AnimationSpeed);
+
+                // iOS scroll to end fix
+                if (Device.RuntimePlatform.Equals(Device.iOS))
+                {
+                    BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.End, true);
+                }
             });
         }
 
