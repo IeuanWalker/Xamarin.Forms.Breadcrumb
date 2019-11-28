@@ -1,6 +1,10 @@
-# Xamarin.Forms.Breadcrumb
+# Xamarin.Forms.Breadcrumb [![Nuget](https://img.shields.io/nuget/v/Xamarin.Forms.Breadcrumb)](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb) [![Nuget](https://img.shields.io/nuget/dt/Xamarin.Forms.Breadcrumb)](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb) 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+ [![Build Status](https://dev.azure.com/ieuanwalker/Xamarin.Forms.Breadcrumb/_apis/build/status/IeuanWalker.Xamarin.Forms.Breadcrumb?branchName=master)](https://dev.azure.com/ieuanwalker/Xamarin.Forms.Breadcrumb/_build/latest?definitionId=9&branchName=master) ![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=IeuanWalker/Xamarin.Forms.Breadcrumb)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/15865c5fcb684e8f821d9f87544c4f36)](https://app.codacy.com/app/ieuan.walker007/Xamarin.Forms.Breadcrumb?utm_source=github.com&utm_medium=referral&utm_content=IeuanWalker/Xamarin.Forms.Breadcrumb&utm_campaign=Badge_Grade_Dashboard)
-[![Nuget](https://img.shields.io/nuget/v/Xamarin.Forms.Breadcrumb)](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb) [![Nuget](https://img.shields.io/nuget/dt/Xamarin.Forms.Breadcrumb)](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://dev.azure.com/ieuanwalker/Xamarin.Forms.Breadcrumb/_apis/build/status/IeuanWalker.Xamarin.Forms.Breadcrumb?branchName=master)](https://dev.azure.com/ieuanwalker/Xamarin.Forms.Breadcrumb/_build/latest?definitionId=9&branchName=master) ![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=IeuanWalker/Xamarin.Forms.Breadcrumb)
+
 
 This is a breadcrumb navigation control that is completely automatic and uses the Navigation stack to get the page titles to generate the breadcrumbs.
 
