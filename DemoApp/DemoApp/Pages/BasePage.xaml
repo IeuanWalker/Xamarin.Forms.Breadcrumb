@@ -6,10 +6,12 @@
              xmlns:icons="clr-namespace:DemoApp">
     <ContentPage.Content>
         <StackLayout>
-            <!-- Breadcrumb -->
+            <!--  Breadcrumb  -->
+            <Label Text="Default" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start" />
 
-            <!-- FontImageSource -->
+            <!--  FontImageSource  -->
+            <Label Text="Icon - FontAwesome" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <FontImageSource FontFamily="{StaticResource FontAwesome}"
@@ -17,29 +19,25 @@
                                      Size="15"
                                      Color="Red" />
                 </breadcrumb:Breadcrumb.Separator>
-                <breadcrumb:Breadcrumb.FirstBreadCrumb>
-                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
-                                     Glyph="{x:Static icons:IconFont.Home}"
-                                     Size="35"
-                                     Color="Red" />
-                </breadcrumb:Breadcrumb.FirstBreadCrumb>
             </breadcrumb:Breadcrumb>
 
-            <!-- UriImageSource -->
+            <!--  UriImageSource  -->
+            <Label Text="Image - URL" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <UriImageSource Uri="https://cdn.iconscout.com/icon/free/png-256/xamarin-4-599473.png" />
                 </breadcrumb:Breadcrumb.Separator>
             </breadcrumb:Breadcrumb>
 
-            <!-- FileImageSource -->
+            <!--  FileImageSource  -->
+            <Label Text="Image - Embedded" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <FileImageSource File="exampleImage.png" />
                 </breadcrumb:Breadcrumb.Separator>
             </breadcrumb:Breadcrumb>
 
-            <!-- Page content -->
+            <!--  Page content  -->
             <StackLayout x:Name="BaseContent"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand" />
