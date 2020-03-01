@@ -52,6 +52,14 @@ namespace Breadcrumb
             set => SetValue(CornerRadiusProperty, value);
         }
 
+        // Breadcrumb margin
+        public static readonly BindableProperty BreadcrumbMarginProperty = BindableProperty.Create(nameof(BreadcrumbMargin), typeof(Thickness), typeof(Breadcrumb), new Thickness(0));
+        public Thickness BreadcrumbMargin
+        {
+            get => (Thickness)GetValue(BreadcrumbMarginProperty);
+            set => SetValue(BreadcrumbMarginProperty, value);
+        }
+
         // BreadcrumbBackgroundColor
         public static readonly BindableProperty BreadcrumbBackgroundColorProperty = BindableProperty.Create(nameof(BreadcrumbBackgroundColor), typeof(Color), typeof(Breadcrumb), Color.Transparent);
         public Color BreadcrumbBackgroundColor
@@ -208,7 +216,8 @@ namespace Breadcrumb
                 VerticalOptions = LayoutOptions.Center,
                 CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
                 BackgroundColor = isLast ? LastBreadcrumbBackgroundColor : BreadcrumbBackgroundColor,
-                Content = stackLayout
+                Content = stackLayout,
+                Margin = BreadcrumbMargin
             };
         }
 

@@ -49,12 +49,65 @@ Next up, just add the breadcrumb control onto that page and you're all set.
 | ScrollBarVisibility | Sets the HorizontalScrollBarVisibility of the scrollview | More info here [ScrollBarVisibility](https://docs.microsoft.com/en-us/dotnet/api/xamarin.forms.scrollbarvisibility?view=xamarin-forms). Default value is **ScrollBarVisibility.Never**
 | TextColor | Sets the text color for the breadcrumb and seperator   | A `Color` object. <br> Default value is **black**. <br>*(doesnt include the last breadcrumb)* |
 | CornerRadius | A `CornerRadius` object representing each individual corner's radius for each breadcrumb. <br> This property exposed from [PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView) | Uses the `CornerRadius` struct allowing you to specify individual corners. <br> Default value is **10**. <br> *(doesnt include the last breadcrumb)* |
+| BreadcrumbMargin | A `Thickness` object used to define the spacing between the breadcrumb and separators | Uses the `Thickness` struct allowing you to specify left, top, right and bottom margin |
 | BreadcrumbBackgroundColor | This is the background color for the individual breadcrumbs | A `Color` object. <br> Default value is **Transparent**. <br> *(doesnt include the last breadcrumb)* |
 | LastBreadcrumbTextColor | Sets the text color for the last breadcrumb | A Color object. <br> Default value is **black**. |
 | LastBreadcrumbCornerRadius | A `CornerRadius` object representing each individual corner's radius. <br> This is property exposed from [PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView) | Uses the `CornerRadius` struct allowing you to specify individual corners. <br> Default value is **10**. |
 | LastBreadcrumbBackgroundColor | Sets the background color of the last breadcrumbs |  A Color object. <br> Default value is **Transparent**. |
 | AnimationSpeed | Sets the speed of the animated breadcrumb | Default value is **800**. <br> Set to 0 to disable the animation. |
 | IsNavigationEnabled | Used to remove the tab gesture from breadcrumbs | Default value is **True**|
+
+### First breadcrumb customization
+You are able to change the first breadcrumb to an Icon, embedded image or url image.
+It implements the Xamarin.Forms ImageSource object.
+
+```csharp
+<breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
+    <breadcrumb:Breadcrumb.FirstBreadCrumb>
+        <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                            Glyph="{x:Static icons:IconFont.Home}"
+                            Size="35"
+                            Color="Red" />
+    </breadcrumb:Breadcrumb.FirstBreadCrumb>
+</breadcrumb:Breadcrumb>
+```
+
+### Separator customization 
+You are able to change the separators to an Icon, embedded image or url image.
+It implements the Xamarin.Forms ImageSource object.
+
+Font - (FontAwesome)
+```csharp
+<breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
+    <breadcrumb:Breadcrumb.Separator>
+        <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                            Glyph="{x:Static icons:IconFont.ChevronRight}"
+                            Size="15"
+                            Color="Red" />
+    </breadcrumb:Breadcrumb.Separator>
+</breadcrumb:Breadcrumb>
+```
+
+Image - URL
+```csharp
+<breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
+    <breadcrumb:Breadcrumb.Separator>
+        <UriImageSource Uri="https://cdn.iconscout.com/icon/free/png-256/xamarin-4-599473.png" />
+    </breadcrumb:Breadcrumb.Separator>
+</breadcrumb:Breadcrumb>
+```
+
+Image - Embedded
+```csharp
+<breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
+    <breadcrumb:Breadcrumb.Separator>
+        <FileImageSource File="exampleImage.png" />
+    </breadcrumb:Breadcrumb.Separator>
+</breadcrumb:Breadcrumb>
+```
+
+
+
 
 
 
