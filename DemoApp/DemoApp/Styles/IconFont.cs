@@ -1,4 +1,4 @@
-﻿namespace DemoApp
+﻿namespace DemoApp.Styles
 {
     static class IconFont
     {
