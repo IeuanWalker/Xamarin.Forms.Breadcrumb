@@ -198,14 +198,16 @@ namespace Breadcrumb
             }
             else
             {
-                stackLayout.Children.Add(new Label
+                Label breadcrumbText = new Label
                 {
                     Text = page.Title,
                     FontSize = 15,
-                    TextColor = isLast ? LastBreadcrumbTextColor : TextColor,
                     VerticalOptions = LayoutOptions.Center,
                     VerticalTextAlignment = TextAlignment.Center
-                });
+                };
+                breadcrumbText.SetBinding(Label.TextColorProperty, new Binding(isLast ? nameof(LastBreadcrumbTextColor) : nameof(TextColor), source: new RelativeBindingSource(RelativeBindingSourceMode.FindAncestor, typeof(ContentView), 5)));
+
+                stackLayout.Children.Add(breadcrumbText);
             }
 
 
