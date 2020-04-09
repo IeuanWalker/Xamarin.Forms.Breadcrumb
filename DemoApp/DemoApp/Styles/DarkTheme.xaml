@@ -8,8 +8,8 @@
 
     <Color x:Key="Text">#fff</Color>
 
-    <Color x:Key="BreadcrumBackground">#37474f</Color>
-    <Color x:Key="LastBreadcrumBackground">#000</Color>
-    <Color x:Key="BreadcrumTextColour">#bdbdbd</Color>
-    <Color x:Key="LastBreadcrumTextColour">#fff</Color>
+    <Color x:Key="BreadcrumbBackground">#37474f</Color>
+    <Color x:Key="LastBreadcrumbBackground">#000</Color>
+    <Color x:Key="BreadcrumbTextColour">#bdbdbd</Color>
+    <Color x:Key="LastBreadcrumbTextColour">#fff</Color>
 </ResourceDictionary>

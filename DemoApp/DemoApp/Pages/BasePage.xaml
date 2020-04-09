@@ -15,7 +15,7 @@
             <!--  Breadcrumb  -->
             <Label Text="Default" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Padding="15"
-                                   TextColor="{DynamicResource Text}"
+                                   TextColor="Red"
                                    VerticalOptions="Start" />
 
             <!--  Dynamic test  -->
