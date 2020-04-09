@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -38,7 +37,7 @@ namespace Breadcrumb
         }
 
         // Text Color
-        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(Breadcrumb), Color.Black, BindingMode.TwoWay);
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(Breadcrumb), Color.Black);
         public Color TextColor
         {
             get => (Color)GetValue(TextColorProperty);
@@ -199,45 +198,27 @@ namespace Breadcrumb
             }
             else
             {
-                var breadcrumbContent = new Label
+                stackLayout.Children.Add(new Label
                 {
                     Text = page.Title,
                     FontSize = 15,
+                    TextColor = isLast ? LastBreadcrumbTextColor : TextColor,
                     VerticalOptions = LayoutOptions.Center,
                     VerticalTextAlignment = TextAlignment.Center
-                };
-                if (isLast)
-                {
-                    breadcrumbContent.SetBinding(TextColorProperty, new Binding(nameof(LastBreadcrumbTextColor)));
-                }
-                else
-                {
-                    breadcrumbContent.SetBinding(TextColorProperty, new Binding(nameof(TextColor)));
-                }
-                stackLayout.Children.Add(breadcrumbContent);
+                });
             }
 
 
             // Create PancakeView, and add StackLayout containing the selectedPage title
-            var breadcrumbContainer =  new PancakeView
+            return new PancakeView
             {
                 Padding = 10,
                 VerticalOptions = LayoutOptions.Center,
                 CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
+                BackgroundColor = isLast ? LastBreadcrumbBackgroundColor : BreadcrumbBackgroundColor,
                 Content = stackLayout,
                 Margin = BreadcrumbMargin
             };
-
-            if (isLast)
-            {
-                breadcrumbContainer.SetBinding(BackgroundColorProperty, new Binding(nameof(LastBreadcrumbBackgroundColor)));
-            }
-            else
-            {
-                breadcrumbContainer.SetBinding(BackgroundColorProperty, new Binding(nameof(BreadcrumbBackgroundColor)));
-            }
-
-            return breadcrumbContainer;
         }
 
         /// <summary>
@@ -249,9 +230,7 @@ namespace Breadcrumb
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                if (!BreadCrumbContainer.Children.Any()) return;
-
-                //! iOS scroll to end fix
+                // iOS scroll to end fix
                 if (Device.RuntimePlatform.Equals(Device.iOS))
                 {
                     await BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer.Children.LastOrDefault(), ScrollToPosition.MakeVisible, false);

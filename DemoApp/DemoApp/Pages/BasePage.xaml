@@ -30,7 +30,7 @@
                                    LastBreadcrumbBackgroundColor="{DynamicResource LastBreadcrumBackground}"
                                    LastBreadcrumbCornerRadius="6"
                                    LastBreadcrumbTextColor="{DynamicResource LastBreadcrumTextColour}"
-                                   TextColor="{DynamicResource BreadcrumTextColour}"
+                                   TextColor="{DynamicResource Text}"
                                    VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <FontImageSource FontFamily="{StaticResource FontAwesome}"

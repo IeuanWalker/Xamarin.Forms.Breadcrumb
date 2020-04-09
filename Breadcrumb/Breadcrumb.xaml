@@ -11,7 +11,7 @@
             <StackLayout x:Name="BreadCrumbContainer"
                          HorizontalOptions="FillAndExpand"
                          Orientation="Horizontal"
-                         VerticalOptions="Center" />
+                         VerticalOptions="Center"/>
         </ScrollView>
     </ContentView.Content>
 </ContentView>
