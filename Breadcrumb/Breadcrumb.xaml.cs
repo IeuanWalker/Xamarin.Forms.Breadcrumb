@@ -148,6 +148,8 @@ namespace Breadcrumb
                             Source = Separator,
                             VerticalOptions = LayoutOptions.Center
                         });
+
+
                         continue;
                     }
 
@@ -212,15 +214,19 @@ namespace Breadcrumb
 
 
             // Create PancakeView, and add StackLayout containing the selectedPage title
-            return new PancakeView
+            PancakeView container = new PancakeView
             {
                 Padding = 10,
                 VerticalOptions = LayoutOptions.Center,
                 CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
-                BackgroundColor = isLast ? LastBreadcrumbBackgroundColor : BreadcrumbBackgroundColor,
                 Content = stackLayout,
                 Margin = BreadcrumbMargin
             };
+            container.SetBinding(PancakeView.BackgroundColorProperty, new Binding(isLast ? nameof(LastBreadcrumbBackgroundColor) : nameof(BreadcrumbBackgroundColor), source: new RelativeBindingSource(RelativeBindingSourceMode.FindAncestor, typeof(Breadcrumb))));
+
+
+
+            return container;
         }
 
         /// <summary>
