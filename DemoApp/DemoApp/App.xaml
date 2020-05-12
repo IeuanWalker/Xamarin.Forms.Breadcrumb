@@ -6,9 +6,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
     <Application.Resources>
-        <OnPlatform x:Key="FontAwesome"
-                    x:TypeArguments="x:String"
-                    Android="fa-solid-900.ttf#Font Awesome 5 Free"
-                    iOS="FontAwesome5Free-Solid" />
+        <ResourceDictionary Source="/Styles/LightTheme.xaml" />
     </Application.Resources>
 </Application>

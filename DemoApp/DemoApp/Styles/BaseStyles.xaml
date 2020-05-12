@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary x:Class="DemoApp.Styles.BaseStyles"
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Style x:Key="ButtonInfo" TargetType="Grid">
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="RowSpacing" Value="0" />
+        <Setter Property="BackgroundColor" Value="#01383f" />
+    </Style>
+
+    <OnPlatform x:Key="FormMargins"
+                x:TypeArguments="Thickness"
+                Default="20,0,20,0" />
+
+    <Style x:Key="FormWrapper" TargetType="FlexLayout">
+        <Setter Property="Margin" Value="20,0,20,0" />
+    </Style>
+    <Style x:Key="FormWrapperStack" TargetType="StackLayout">
+        <Setter Property="Margin" Value="20,0,20,0" />
+    </Style>
+
+    <OnPlatform x:Key="InputMargins"
+                x:TypeArguments="Thickness"
+                Android="7,3,7,3"
+                iOS="5,15,5,15" />
+
+
+    <OnPlatform x:Key="PickerMargins"
+                x:TypeArguments="Thickness"
+                Android="15,5,5,5"
+                iOS="15,15,15,15" />
+
+
+    <OnPlatform x:Key="ButtonPadding"
+                x:TypeArguments="Thickness"
+                Android="10,5,10,5"
+                iOS="10,15,10,15" />
+
+
+    <OnPlatform x:Key="IconRadius"
+                x:TypeArguments="CornerRadius"
+                Android="28"
+                iOS="20" />
+    <OnPlatform x:Key="ListTopMargins"
+                x:TypeArguments="Thickness"
+                Android="0,0,0,0"
+                iOS="0,0,0,25" />
+    <OnPlatform x:Key="ListMargins"
+                x:TypeArguments="Thickness"
+                Android="0,0,0,10"
+                iOS="0,0,0,10" />
+
+    <OnPlatform x:Key="SectionMargin"
+                x:TypeArguments="Thickness"
+                Android="0"
+                iOS="0,2,0,0" />
+
+
+    <OnPlatform x:Key="PickerRow"
+                x:TypeArguments="Thickness"
+                Android="0,-27,0,0"
+                iOS="0,-13,0,0" />
+
+
+</ResourceDictionary>

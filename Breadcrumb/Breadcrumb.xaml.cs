@@ -148,6 +148,8 @@ namespace Breadcrumb
                             Source = Separator,
                             VerticalOptions = LayoutOptions.Center
                         });
+
+
                         continue;
                     }
 
@@ -198,27 +200,33 @@ namespace Breadcrumb
             }
             else
             {
-                stackLayout.Children.Add(new Label
+                Label breadcrumbText = new Label
                 {
                     Text = page.Title,
                     FontSize = 15,
-                    TextColor = isLast ? LastBreadcrumbTextColor : TextColor,
                     VerticalOptions = LayoutOptions.Center,
                     VerticalTextAlignment = TextAlignment.Center
-                });
+                };
+                breadcrumbText.SetBinding(Label.TextColorProperty, new Binding(isLast ? nameof(LastBreadcrumbTextColor) : nameof(TextColor), source: new RelativeBindingSource(RelativeBindingSourceMode.FindAncestor, typeof(Breadcrumb))));
+
+                stackLayout.Children.Add(breadcrumbText);
             }
 
 
             // Create PancakeView, and add StackLayout containing the selectedPage title
-            return new PancakeView
+            PancakeView container = new PancakeView
             {
                 Padding = 10,
                 VerticalOptions = LayoutOptions.Center,
                 CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
-                BackgroundColor = isLast ? LastBreadcrumbBackgroundColor : BreadcrumbBackgroundColor,
                 Content = stackLayout,
                 Margin = BreadcrumbMargin
             };
+            container.SetBinding(PancakeView.BackgroundColorProperty, new Binding(isLast ? nameof(LastBreadcrumbBackgroundColor) : nameof(BreadcrumbBackgroundColor), source: new RelativeBindingSource(RelativeBindingSourceMode.FindAncestor, typeof(Breadcrumb))));
+
+
+
+            return container;
         }
 
         /// <summary>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary x:Class="DemoApp.Styles.LightTheme"
+                    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    Source="DefaultTheme.xaml">
+    <Color x:Key="BackgroundColour">#fff</Color>
+    <Color x:Key="Primary">#6200eee</Color>
+
+    <Color x:Key="Text">#000</Color>
+
+    <Color x:Key="BreadcrumbBackground">#fff</Color>
+    <Color x:Key="LastBreadcrumbBackground">#dee4e7</Color>
+    <Color x:Key="BreadcrumbTextColour">#757575</Color>
+    <Color x:Key="LastBreadcrumbTextColour">#000</Color>
+</ResourceDictionary>

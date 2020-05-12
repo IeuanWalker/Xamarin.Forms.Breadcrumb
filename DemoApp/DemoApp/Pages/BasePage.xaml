@@ -3,15 +3,45 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Xamarin.Forms.Breadcrumb"
-             xmlns:icons="clr-namespace:DemoApp">
+             xmlns:icons="clr-namespace:DemoApp.Styles"
+             BackgroundColor="{DynamicResource BackgroundColour}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ThemeToggle"
+                     Clicked="ThemeToggle_Clicked"
+                     Text="Light" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <!--  Breadcrumb  -->
-            <Label Text="Default" />
-            <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start" />
+            <Label Text="Default" TextColor="{DynamicResource Text}" />
+            <breadcrumb:Breadcrumb Padding="15"
+                                   TextColor="Red"
+                                   VerticalOptions="Start" />
+
+            <!--  Dynamic test  -->
+            <Label Text="Dynamic Tests" TextColor="{DynamicResource Text}" />
+            <breadcrumb:Breadcrumb Grid.Row="0"
+                                   Grid.Column="1"
+                                   Margin="0"
+                                   Padding="0"
+                                   BackgroundColor="Transparent"
+                                   BreadcrumbBackgroundColor="{DynamicResource BreadcrumBackground}"
+                                   CornerRadius="6"
+                                   LastBreadcrumbBackgroundColor="{DynamicResource LastBreadcrumBackground}"
+                                   LastBreadcrumbCornerRadius="6"
+                                   LastBreadcrumbTextColor="{DynamicResource LastBreadcrumbTextColour}"
+                                   TextColor="{DynamicResource Text}"
+                                   VerticalOptions="Start">
+                <breadcrumb:Breadcrumb.Separator>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Glyph="{x:Static icons:IconFont.ChevronRight}"
+                                     Size="12"
+                                     Color="{DynamicResource Primary}" />
+                </breadcrumb:Breadcrumb.Separator>
+            </breadcrumb:Breadcrumb>
 
             <!--  FontImageSource  -->
-            <Label Text="Icon - FontAwesome" />
+            <Label Text="Icon - FontAwesome" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <FontImageSource FontFamily="{StaticResource FontAwesome}"
@@ -22,7 +52,7 @@
             </breadcrumb:Breadcrumb>
 
             <!--  UriImageSource  -->
-            <Label Text="Image - URL" />
+            <Label Text="Image - URL" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <UriImageSource Uri="https://cdn.iconscout.com/icon/free/png-256/xamarin-4-599473.png" />
@@ -30,14 +60,42 @@
             </breadcrumb:Breadcrumb>
 
             <!--  FileImageSource  -->
-            <Label Text="Image - Embedded" />
+            <Label Text="Image - Embedded" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
                     <FileImageSource File="exampleImage.png" />
                 </breadcrumb:Breadcrumb.Separator>
             </breadcrumb:Breadcrumb>
 
-            <!--  Page content  -->
+            <!--  Lee test  -->
+            <Label Text="Lee Tests" TextColor="{DynamicResource Text}" />
+            <breadcrumb:Breadcrumb Grid.Row="0"
+                                   Grid.Column="1"
+                                   Margin="0"
+                                   Padding="0"
+                                   BackgroundColor="Transparent"
+                                   BreadcrumbBackgroundColor="{DynamicResource BreadcrumBackground}"
+                                   CornerRadius="6"
+                                   LastBreadcrumbBackgroundColor="{DynamicResource LastBreadcrumBackground}"
+                                   LastBreadcrumbCornerRadius="6"
+                                   LastBreadcrumbTextColor="{DynamicResource LastBreadcrumbTextColour}"
+                                   TextColor="{DynamicResource Text}"
+                                   VerticalOptions="Start">
+                <breadcrumb:Breadcrumb.Separator>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Glyph="{x:Static icons:IconFont.ChevronRight}"
+                                     Size="12"
+                                     Color="{DynamicResource Text}" />
+                </breadcrumb:Breadcrumb.Separator>
+                <breadcrumb:Breadcrumb.FirstBreadCrumb>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Glyph="{x:Static icons:IconFont.Home}"
+                                     Size="12"
+                                     Color="{DynamicResource Text}" />
+                </breadcrumb:Breadcrumb.FirstBreadCrumb>
+            </breadcrumb:Breadcrumb>
+
+                <!--  Page content  -->
             <StackLayout x:Name="BaseContent"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand" />
