@@ -12,7 +12,11 @@ The animation for the control is based on this article - [A Cool Breadcrumbs Bar
 
 Also incorporated [Xamarin.Forms.Pancake](https://github.com/sthewissen/Xamarin.Forms.PancakeView) for more customisation options.
 
-![Example gif](https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/blob/master/Example.gif)
+Basic example             |  Production Example
+:-------------------------:|:-------------------------:
+![Example gif](https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/blob/master/Example.gif)  |  ![Production Example gif](https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/blob/master/ProdExample.gif)
+
+
 
 ## How to use it?
 Install the [NuGet package](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb) into your shared project project 
