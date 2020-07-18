@@ -18,8 +18,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Create NuGet package
-      run: dotnet pack -c Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/releases/tag/${{ github.event.release.tag_name }}"
-      working-directory: ./Xamarin.Forms.Breadcrumb/Breadcrumb
+      run: dotnet pack Breadcrumb/Breadcrumb.csproj -c Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/releases/tag/${{ github.event.release.tag_name }}"
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
