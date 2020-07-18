@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore --source Breadcrumb
+      run: dotnet build Breadcrumb/Breadcrumb.csproj --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     - name: Publish 
