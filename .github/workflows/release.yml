@@ -17,11 +17,9 @@ jobs:
         dotnet-version: 3.1.101
     - name: Install dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build Breadcrumb/Breadcrumb.csproj --configuration Release --no-restore
     - name: Create NuGet package
       run: dotnet pack -c Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/releases/tag/${{ github.event.release.tag_name }}"
-      working-directory: ./Breadcrumb
+      working-directory: ./Xamarin.Forms.Breadcrumb/Breadcrumb
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
