@@ -20,9 +20,9 @@ jobs:
     - name: Build
       run: dotnet build Breadcrumb/Breadcrumb.csproj --configuration Release --no-restore
     - name: Create NuGet package
-      run: dotnet pack Breadcrumb/Breadcrumb.csproj -c Release --no-build -o Breadcrumb\bin\Release\Latest /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/releases/tag/${{ github.event.release.tag_name }}"
+      run: dotnet pack Breadcrumb/Breadcrumb.csproj -c Release --no-build /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/releases/tag/${{ github.event.release.tag_name }}"
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
         name: NuGet package
-        path: "**/*.nupkg"
+        path: "**/Xamarin.Forms.Breadcrumb.${{ github.event.release.tag_name }}.nupkg"
