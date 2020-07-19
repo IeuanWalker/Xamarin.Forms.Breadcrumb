@@ -25,9 +25,9 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: NuGet package
-        path: Breadcrumb\bin\Release\Xamarin.Forms.Breadcrumb.${{ github.event.release.tag_name }}.nupkg
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: NuGet package
         path: "**/*.nupkg"
+    - name: Publish 
+      uses: brandedoutcast/publish-nuget@v2.5.2  
+      with:   
+        PROJECT_FILE_PATH: Breadcrumb/Breadcrumb.csproj  
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
