@@ -21,8 +21,3 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build Breadcrumb/Breadcrumb.csproj --configuration Release --no-restore
-    - name: Publish 
-      uses: brandedoutcast/publish-nuget@v2.5.2  
-      with:   
-        PROJECT_FILE_PATH: Breadcrumb/Breadcrumb.csproj  
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}}  
