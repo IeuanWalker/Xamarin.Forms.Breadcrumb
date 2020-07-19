@@ -40,7 +40,6 @@
     <PackageTags>Breadcrumb, navigation, xamarin, xamarin.forms</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageId>Xamarin.Forms.Breadcrumb</PackageId>
-    <Version>2.5.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
