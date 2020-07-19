@@ -38,7 +38,6 @@
     <PackageProjectUrl>https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb</PackageProjectUrl>
     <RepositoryUrl>https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb</RepositoryUrl>
     <PackageTags>Breadcrumb, navigation, xamarin, xamarin.forms</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageId>Xamarin.Forms.Breadcrumb</PackageId>
     <Version>2.5.1</Version>
