@@ -25,4 +25,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: NuGet package
-        path: Breadcrumb\bin\Release\Latest\Xamarin.Forms.Breadcrumb.${{ github.event.release.tag_name }}.nupkg
+        path: "**/*.nupkg"
