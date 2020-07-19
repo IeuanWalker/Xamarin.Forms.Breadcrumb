@@ -21,7 +21,7 @@ Basic example             |  Production Example
 ## How to use it?
 Install the [NuGet package](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb) into your shared project project 
 ```
-Install-Package Xamarin.Forms.Breadcrumb -Version 2.0.0
+Install-Package Xamarin.Forms.Breadcrumb
 ```
 
 To add to a page the first thing we need to do is tell our XAML page where it can find the Breadcrumb control, which is done by adding the following attribute to our ContentPage:
