@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build Breadcrumb/Breadcrumb.csproj --configuration Release --no-restore
+    - name: Create NuGet package
+      run: dotnet pack Breadcrumb/Breadcrumb.csproj -c Release --no-build /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/releases/tag/${{ github.event.release.tag_name }}"
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: NuGet package
+        path: "**/*.nupkg"
+    - name: Publish NuGet package
+      run: dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
