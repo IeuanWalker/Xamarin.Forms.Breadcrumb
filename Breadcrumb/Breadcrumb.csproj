@@ -17,7 +17,7 @@
 
     <!--Don't auto add files for me, I will tell you -->
     <!--<EnableDefaultCompileItems>false</EnableDefaultCompileItems>-->
-
+<!--comment-->
     <!--Version of C# to use -->
     <LangVersion>default</LangVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
