@@ -12,6 +12,4 @@
                 x:TypeArguments="x:String"
                 Android="fa-solid-900.ttf#Font Awesome 5 Free"
                 iOS="FontAwesome5Free-Solid" />
-
-
 </ResourceDictionary>
