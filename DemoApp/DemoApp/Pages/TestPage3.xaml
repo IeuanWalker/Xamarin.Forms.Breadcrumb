@@ -2,8 +2,8 @@
 <pages:BasePage x:Class="DemoApp.Pages.TestPage3"
                 xmlns="http://xamarin.com/schemas/2014/forms"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                 xmlns:pages="clr-namespace:DemoApp.Pages"
                 Title="Test 3 long page name test"
                 mc:Ignorable="d">

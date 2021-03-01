@@ -95,7 +95,7 @@
                 </breadcrumb:Breadcrumb.FirstBreadCrumb>
             </breadcrumb:Breadcrumb>
 
-                <!--  Page content  -->
+            <!--  Page content  -->
             <StackLayout x:Name="BaseContent"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand" />

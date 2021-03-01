@@ -26,6 +26,7 @@ namespace DemoApp.Pages
                     Application.Current.Resources = new DarkTheme();
                     ThemeToggle.Text = nameof(ThemeEnum.Dark);
                     break;
+
                 default:
                     Application.Current.Resources = new LightTheme();
                     ThemeToggle.Text = nameof(ThemeEnum.Light);
@@ -34,7 +35,8 @@ namespace DemoApp.Pages
         }
     }
 
-    public enum ThemeEnum {
+    public enum ThemeEnum
+    {
         Light,
         Dark
     }

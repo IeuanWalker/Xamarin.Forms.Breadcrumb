@@ -25,18 +25,15 @@
                 Android="7,3,7,3"
                 iOS="5,15,5,15" />
 
-
     <OnPlatform x:Key="PickerMargins"
                 x:TypeArguments="Thickness"
                 Android="15,5,5,5"
                 iOS="15,15,15,15" />
 
-
     <OnPlatform x:Key="ButtonPadding"
                 x:TypeArguments="Thickness"
                 Android="10,5,10,5"
                 iOS="10,15,10,15" />
-
 
     <OnPlatform x:Key="IconRadius"
                 x:TypeArguments="CornerRadius"
@@ -56,11 +53,8 @@
                 Android="0"
                 iOS="0,2,0,0" />
 
-
     <OnPlatform x:Key="PickerRow"
                 x:TypeArguments="Thickness"
                 Android="0,-27,0,0"
                 iOS="0,-13,0,0" />
-
-
 </ResourceDictionary>
