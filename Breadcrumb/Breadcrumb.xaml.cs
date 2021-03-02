@@ -205,8 +205,8 @@ namespace Breadcrumb
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
-            AutomationProperties.SetIsInAccessibleTree(stackLayout, true);
-            AutomationProperties.SetName(stackLayout, page.Title);
+            AutomationProperties.SetIsInAccessibleTree(stackLayout, false);
+           
 
             // Create and Add label to StackLayout
             if (isFirst && FirstBreadCrumb != null)
@@ -227,7 +227,7 @@ namespace Breadcrumb
                     VerticalTextAlignment = TextAlignment.Center
                 };
                 breadcrumbText.SetBinding(Label.TextColorProperty, new Binding(isLast ? nameof(LastBreadcrumbTextColor) : nameof(TextColor), source: new RelativeBindingSource(RelativeBindingSourceMode.FindAncestor, typeof(Breadcrumb))));
-                AutomationProperties.SetIsInAccessibleTree(breadcrumbText, true);
+                AutomationProperties.SetIsInAccessibleTree(breadcrumbText, false);
 
                 stackLayout.Children.Add(breadcrumbText);
             }
@@ -242,6 +242,8 @@ namespace Breadcrumb
                 Margin = BreadcrumbMargin
             };
             container.SetBinding(BackgroundColorProperty, new Binding(isLast ? nameof(LastBreadcrumbBackgroundColor) : nameof(BreadcrumbBackgroundColor), source: new RelativeBindingSource(RelativeBindingSourceMode.FindAncestor, typeof(Breadcrumb))));
+            AutomationProperties.SetIsInAccessibleTree(container, true);
+            AutomationProperties.SetName(container, page.Title);
 
             return container;
         }

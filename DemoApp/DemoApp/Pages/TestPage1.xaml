@@ -11,7 +11,7 @@
         <Button Margin="25"
                 Clicked="Button_Clicked"
                 HorizontalOptions="CenterAndExpand"
-                Text="Got to page 2"
+                Text="Go to page 2"
                 VerticalOptions="Center" />
     </pages:BasePage.BasePageContent>
 </pages:BasePage>
