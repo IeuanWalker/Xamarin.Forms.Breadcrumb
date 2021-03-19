@@ -25,11 +25,11 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: NuGet package
-        path: "**/*.nupkg"
+        path: "**/Xamarin.Forms.Breadcrumb.${{ github.event.release.tag_name }}.nupkg"
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
         name: NuGet package
-        path: "**/*.snupkg"
+        path: "**/Xamarin.Forms.Breadcrumb.${{ github.event.release.tag_name }}.snupkg"
     - name: Publish NuGet package
-      run: dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push **/Xamarin.Forms.Breadcrumb.${{ github.event.release.tag_name }}.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
