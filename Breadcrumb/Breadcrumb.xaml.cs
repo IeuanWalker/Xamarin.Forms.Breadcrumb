@@ -206,7 +206,6 @@ namespace Breadcrumb
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
             AutomationProperties.SetIsInAccessibleTree(stackLayout, false);
-           
 
             // Create and Add label to StackLayout
             if (isFirst && FirstBreadCrumb != null)
