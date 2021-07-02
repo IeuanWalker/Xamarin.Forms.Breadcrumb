@@ -20,9 +20,14 @@ Basic example             |  Production Example
 
 
 ## How to use it?
-Install the [NuGet package](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb) into your shared project project 
+Install the [NuGet package](https://www.nuget.org/packages/Xamarin.Forms.Breadcrumb) into all of your projects 
 ```
 Install-Package Xamarin.Forms.Breadcrumb
+```
+
+For iOS add the following to AppDelegate.cs > FinishedLaunching
+```csharp
+BreadcrumbButtonRenderer.Init();
 ```
 
 To add to a page the first thing we need to do is tell our XAML page where it can find the Breadcrumb control, which is done by adding the following attribute to our ContentPage:
@@ -52,6 +57,7 @@ Next up, just add the breadcrumb control onto that page and you're all set.
 | Property | What it does | Extra info |
 |---|---|---- |
 | ScrollBarVisibility | Sets the HorizontalScrollBarVisibility of the scrollview | More info here [ScrollBarVisibility](https://docs.microsoft.com/en-us/dotnet/api/xamarin.forms.scrollbarvisibility?view=xamarin-forms). Default value is **ScrollBarVisibility.Never**
+| FontSize | Sets the text font size for the breadcrumb | Default value is **15**. <br>Support [`NamedSize`](https://docs.microsoft.com/en-us/dotnet/api/xamarin.forms.namedsize?view=xamarin-forms) |
 | TextColor | Sets the text color for the breadcrumb and seperator   | A `Color` object. <br> Default value is **black**. <br>*(doesnt include the last breadcrumb)* |
 | CornerRadius | A `CornerRadius` object representing each individual corner's radius for each breadcrumb. <br> This property exposed from [PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView) | Uses the `CornerRadius` struct allowing you to specify individual corners. <br> Default value is **10**. <br> *(doesnt include the last breadcrumb)* |
 | BreadcrumbMargin | A `Thickness` object used to define the spacing between the breadcrumb and separators | Uses the `Thickness` struct allowing you to specify left, top, right and bottom margin |
