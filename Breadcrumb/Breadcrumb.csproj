@@ -49,6 +49,7 @@
   <ItemGroup>
     <!-- This None is here so the conditionally included files show up in the Solution Explorer -->
     <None Include="**\*.cs;**\*.xml;**\*.axml;**\*.png" Exclude="obj\**\*.*;bin\**\*.*;bin;obj" />
+    <None Remove="BreadcrumbButton.cs" />
     <None Include="..\logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -56,8 +57,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
-    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.1.0.714" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
   </ItemGroup>
 
 </Project>
