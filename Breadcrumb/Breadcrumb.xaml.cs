@@ -39,6 +39,16 @@ namespace Breadcrumb
             set => SetValue(ScrollBarVisibilityProperty, value);
         }
 
+        // FontSize
+        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(double), typeof(Breadcrumb), 15d);
+        [TypeConverter(typeof(FontSizeConverter))]
+        public double FontSize
+        {
+            get => (double)GetValue(FontSizeProperty);
+            set => SetValue(FontSizeProperty, value);
+        }
+
+
         // Text Color
         public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(Breadcrumb), Color.Black);
 
@@ -222,7 +232,7 @@ namespace Breadcrumb
                 Label breadcrumbText = new()
                 {
                     Text = page.Title,
-                    FontSize = 15,
+                    FontSize = FontSize,
                     VerticalOptions = LayoutOptions.Center,
                     VerticalTextAlignment = TextAlignment.Center
                 };

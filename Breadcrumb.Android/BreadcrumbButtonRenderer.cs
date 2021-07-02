@@ -2,14 +2,14 @@
 using Android.Views.Accessibility;
 using Breadcrumb.Android;
 using Xamarin.Forms;
-using Xamarin.Forms.PancakeView.Droid;
 using AndroidView = Android.Views;
 using Breadcrumb;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(BreadcrumbButton), typeof(BreadcrumbButtonRenderer))]
 namespace Breadcrumb.Android
 {
-    public class BreadcrumbButtonRenderer : PancakeViewRenderer
+    public class BreadcrumbButtonRenderer : FrameRenderer
     {
         public BreadcrumbButtonRenderer(Context context) : base(context)
         {
