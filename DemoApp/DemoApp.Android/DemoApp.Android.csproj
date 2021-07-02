@@ -110,7 +110,7 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Breadcrumb.Android\Breadcrumb.Android.csproj">
+    <ProjectReference Include="..\..\Src\Breadcrumb.Android\Breadcrumb.Android.csproj">
       <Project>{3d0824c7-05c7-4cf0-b4f9-6463af6ede18}</Project>
       <Name>Breadcrumb.Android</Name>
     </ProjectReference>

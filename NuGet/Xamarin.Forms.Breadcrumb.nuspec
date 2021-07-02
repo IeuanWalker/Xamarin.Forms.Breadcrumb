@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata minClientVersion="">
+    <id>Xamarin.Forms.Breadcrumb</id>
+    <version>0.0.1-alpha</version>
+    <title>SXamarin.Forms.Breadcrumb</title>
+    <authors>Ieuan Walker</authors>
+    <owners>Ieuan Walker</owners>
+    <license type="expression">MIT</license>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/IeuanWalker/Xamarin.Forms.StateButton</projectUrl>
+    <description>Automatic breadcrumb control for Xamarin.Forms </description>
+    <tags>Breadcrumb navigation xamarin xamarin.forms</tags>
+    <icon>logo.png</icon>
+    <dependencies>
+      <group>
+        <dependency id="Xamarin.Forms" version="5.0.0.2012" />
+        <dependency id="Xamarin.Forms.PancakeView" version="1.4.2" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="logo.png" target="" />
+  
+    <!-- .NET Standard -->
+    <file src="../Src/Breadcrumb/bin/Release/netstandard2.0/Breadcrumb.dll" target="lib/netstandard1.0" />
+
+    <!-- Core PCL -->
+    <file src="../Src/Breadcrumb/bin/Release/netstandard2.0/Breadcrumb.dll" target="lib/portable-win+net45+wp80+win81+wpa81" />
+
+    <!-- Xamarin.iOS -->
+    <file src="../Src/Breadcrumb.iOS/bin/Release/Breadcrumb.dll" target="lib/xamarinios10" />
+    <file src="../Src/Breadcrumb.iOS/bin/Release/Breadcrumb.iOS.dll" target="lib/xamarinios10" />
+
+    <!-- Xamarin.Android -->
+    <file src="../Src/Breadcrumb.Android/bin/Release/Breadcrumb.dll" target="lib/monoandroid10" />
+    <file src="../Src/Breadcrumb.Android/bin/Release/Breadcrumb.Android.dll" target="lib/monoandroid10" />
+  </files>
+</package>
+
+<!--nuget pack Xamarin.Forms.Breadcrumb.nuspec -Version 0.0.4-alpha-->

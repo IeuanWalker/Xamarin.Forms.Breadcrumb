@@ -8,8 +8,8 @@
     <!--<TargetFrameworks>Xamarin.iOS10;MonoAndroid80</TargetFrameworks>-->
 
     <!--Assembly and Namespace info -->
-    <AssemblyName>Xamarin.Forms.Breadcrumb</AssemblyName>
-    <RootNamespace>Xamarin.Forms.Breadcrumb</RootNamespace>
+    <AssemblyName>Breadcrumb</AssemblyName>
+    <RootNamespace>Breadcrumb</RootNamespace>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
@@ -43,17 +43,12 @@
     <Version>2.6.0-beta.5</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- This None is here so the conditionally included files show up in the Solution Explorer -->
     <None Include="**\*.cs;**\*.xml;**\*.axml;**\*.png" Exclude="obj\**\*.*;bin\**\*.*;bin;obj" />
     <None Remove="BreadcrumbButton.cs" />
-    <None Include="..\logo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>

@@ -128,7 +128,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\Breadcrumb.iOS\Breadcrumb.iOS.csproj">
+    <ProjectReference Include="..\..\Src\Breadcrumb.iOS\Breadcrumb.iOS.csproj">
       <Project>{43dd689a-3918-43eb-b654-8e1c54f23c72}</Project>
       <Name>Breadcrumb.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
