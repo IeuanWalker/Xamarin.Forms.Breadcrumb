@@ -15,6 +15,7 @@
             <!--  Breadcrumb  -->
             <Label Text="Default" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Padding="15"
+                                   FontSize="Small"
                                    TextColor="Red"
                                    VerticalOptions="Start" />
 

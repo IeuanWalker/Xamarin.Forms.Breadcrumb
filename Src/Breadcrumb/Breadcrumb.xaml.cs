@@ -39,6 +39,16 @@ namespace Breadcrumb
             set => SetValue(ScrollBarVisibilityProperty, value);
         }
 
+        // FontSize
+        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(double), typeof(Breadcrumb), 15d);
+        [TypeConverter(typeof(FontSizeConverter))]
+        public double FontSize
+        {
+            get => (double)GetValue(FontSizeProperty);
+            set => SetValue(FontSizeProperty, value);
+        }
+
+
         // Text Color
         public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(Breadcrumb), Color.Black);
 
@@ -141,7 +151,7 @@ namespace Breadcrumb
                     if (!page.Equals(pages.LastOrDefault()))
                     {
                         // Create breadcrumb
-                        PancakeView breadCrumb1 = BreadCrumbLabelCreator(page, false, page.Equals(pages.FirstOrDefault()));
+                        Frame breadCrumb1 = BreadCrumbLabelCreator(page, false, page.Equals(pages.FirstOrDefault()));
 
                         // Add tap gesture
                         if (IsNavigationEnabled)
@@ -152,6 +162,7 @@ namespace Breadcrumb
                                 Command = new Command<Page>(async item => await GoBack(item).ConfigureAwait(false))
                             };
                             breadCrumb1.GestureRecognizers.Add(tapGesture);
+
                         }
 
                         // Add breadcrumb and separator to BreadCrumbContainer
@@ -173,7 +184,7 @@ namespace Breadcrumb
                     BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
 
                     // Create selectedPage title label
-                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true, page.Equals(pages.FirstOrDefault()));
+                    Frame breadCrumb2 = BreadCrumbLabelCreator(page, true, page.Equals(pages.FirstOrDefault()));
 
                     // Move BreadCrumb of selectedPage to start the animation
                     breadCrumb2.TranslationX = Application.Current.MainPage.Width;
@@ -197,7 +208,7 @@ namespace Breadcrumb
         /// <param name="page"></param>
         /// <param name="isLast"></param>
         /// <param name="isFirst"></param>
-        private PancakeView BreadCrumbLabelCreator(Page page, bool isLast, bool isFirst)
+        private Frame BreadCrumbLabelCreator(Page page, bool isLast, bool isFirst)
         {
             // Create StackLayout to contain the label within a PancakeView
             StackLayout stackLayout = new()
@@ -221,7 +232,7 @@ namespace Breadcrumb
                 Label breadcrumbText = new()
                 {
                     Text = page.Title,
-                    FontSize = 15,
+                    FontSize = FontSize,
                     VerticalOptions = LayoutOptions.Center,
                     VerticalTextAlignment = TextAlignment.Center
                 };
@@ -231,8 +242,7 @@ namespace Breadcrumb
                 stackLayout.Children.Add(breadcrumbText);
             }
 
-            // Create PancakeView, and add StackLayout containing the selectedPage title
-            PancakeView container = new()
+            PancakeView container = new PancakeView
             {
                 Padding = 10,
                 VerticalOptions = LayoutOptions.Center,
@@ -241,10 +251,18 @@ namespace Breadcrumb
                 Margin = BreadcrumbMargin
             };
             container.SetBinding(BackgroundColorProperty, new Binding(isLast ? nameof(LastBreadcrumbBackgroundColor) : nameof(BreadcrumbBackgroundColor), source: new RelativeBindingSource(RelativeBindingSourceMode.FindAncestor, typeof(Breadcrumb))));
-            AutomationProperties.SetIsInAccessibleTree(container, true);
-            AutomationProperties.SetName(container, page.Title);
 
-            return container;
+
+            Frame accessibilityContainer = !isLast && IsNavigationEnabled ? new BreadcrumbButton() : new Frame();
+            accessibilityContainer.HasShadow = false;
+            accessibilityContainer.BackgroundColor = Color.Transparent;
+            accessibilityContainer.Padding = 0;
+            accessibilityContainer.Content = container;
+
+            AutomationProperties.SetIsInAccessibleTree(accessibilityContainer, true);
+            AutomationProperties.SetName(accessibilityContainer, page.Title);
+
+            return accessibilityContainer;
         }
 
         /// <summary>

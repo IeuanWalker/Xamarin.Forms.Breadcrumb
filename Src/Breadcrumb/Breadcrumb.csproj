@@ -8,8 +8,8 @@
     <!--<TargetFrameworks>Xamarin.iOS10;MonoAndroid80</TargetFrameworks>-->
 
     <!--Assembly and Namespace info -->
-    <AssemblyName>Xamarin.Forms.Breadcrumb</AssemblyName>
-    <RootNamespace>Xamarin.Forms.Breadcrumb</RootNamespace>
+    <AssemblyName>Breadcrumb</AssemblyName>
+    <RootNamespace>Breadcrumb</RootNamespace>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
@@ -43,21 +43,17 @@
     <Version>2.6.0-beta.5</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- This None is here so the conditionally included files show up in the Solution Explorer -->
     <None Include="**\*.cs;**\*.xml;**\*.axml;**\*.png" Exclude="obj\**\*.*;bin\**\*.*;bin;obj" />
-    <None Include="..\logo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <None Remove="BreadcrumbButton.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
-    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.1.0.714" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
   </ItemGroup>
 
 </Project>

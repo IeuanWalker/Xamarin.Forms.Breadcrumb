@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using Breadcrumb.iOS;
+using Foundation;
 using UIKit;
 
 namespace DemoApp.iOS
@@ -18,6 +19,8 @@ namespace DemoApp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            BreadcrumbButtonRenderer.Init();
+
             Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

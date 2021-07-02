@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Breadcrumb\Breadcrumb.csproj" />
+    <ProjectReference Include="..\..\Src\Breadcrumb\Breadcrumb.csproj" />
   </ItemGroup>
 
   <ItemGroup>
