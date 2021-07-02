@@ -36,7 +36,7 @@ To add to a page the first thing we need to do is tell our XAML page where it ca
 <ContentPage x:Class="DemoApp.Pages.BasePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Xamarin.Forms.Breadcrumb"
+             xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Breadcrumb"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
