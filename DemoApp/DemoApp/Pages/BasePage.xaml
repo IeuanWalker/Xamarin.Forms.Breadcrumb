@@ -2,7 +2,7 @@
 <ContentPage x:Class="DemoApp.Pages.BasePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Xamarin.Forms.Breadcrumb"
+             xmlns:breadcrumb="clr-namespace:Breadcrumb;assembly=Breadcrumb"
              xmlns:icons="clr-namespace:DemoApp.Styles"
              BackgroundColor="{DynamicResource BackgroundColour}">
     <ContentPage.ToolbarItems>
@@ -12,14 +12,34 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <!--  Breadcrumb  -->
+            <Label Text="Production version" TextColor="{DynamicResource Text}" />
+            <breadcrumb:Breadcrumb Margin="0"
+                                   Padding="0"
+                                   BackgroundColor="Transparent"
+                                   BreadcrumbBackgroundColor="#FCFCFC"
+                                   CornerRadius="6"
+                                   FontSize="Small"
+                                   LastBreadcrumbBackgroundColor="#FCFCFC"
+                                   LastBreadcrumbCornerRadius="6"
+                                   LastBreadcrumbTextColor="#595959"
+                                   TextColor="#086c6d"
+                                   VerticalOptions="Start">
+                <breadcrumb:Breadcrumb.Separator>
+                    <FontImageSource FontFamily="{StaticResource FontAwesome}"
+                                     Glyph="{x:Static icons:IconFont.ChevronRight}"
+                                     Size="12"
+                                     Color="#086c6d" />
+                </breadcrumb:Breadcrumb.Separator>
+            </breadcrumb:Breadcrumb>
+
+            <!-- Breadcrumb -->
             <Label Text="Default" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Padding="15"
                                    FontSize="Small"
                                    TextColor="Red"
                                    VerticalOptions="Start" />
 
-            <!--  Dynamic test  -->
+            <!-- Dynamic test -->
             <Label Text="Dynamic Tests" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Margin="0"
                                    Padding="0"
@@ -39,7 +59,7 @@
                 </breadcrumb:Breadcrumb.Separator>
             </breadcrumb:Breadcrumb>
 
-            <!--  FontImageSource  -->
+            <!-- FontImageSource -->
             <Label Text="Icon - FontAwesome" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
@@ -50,7 +70,7 @@
                 </breadcrumb:Breadcrumb.Separator>
             </breadcrumb:Breadcrumb>
 
-            <!--  UriImageSource  -->
+            <!-- UriImageSource -->
             <Label Text="Image - URL" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
@@ -58,7 +78,7 @@
                 </breadcrumb:Breadcrumb.Separator>
             </breadcrumb:Breadcrumb>
 
-            <!--  FileImageSource  -->
+            <!-- FileImageSource -->
             <Label Text="Image - Embedded" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
                 <breadcrumb:Breadcrumb.Separator>
@@ -66,7 +86,7 @@
                 </breadcrumb:Breadcrumb.Separator>
             </breadcrumb:Breadcrumb>
 
-            <!--  Lee test  -->
+            <!-- Lee test -->
             <Label Text="Lee Tests" TextColor="{DynamicResource Text}" />
             <breadcrumb:Breadcrumb Margin="0"
                                    Padding="0"
@@ -92,7 +112,7 @@
                 </breadcrumb:Breadcrumb.FirstBreadCrumb>
             </breadcrumb:Breadcrumb>
 
-            <!--  Page content  -->
+            <!-- Page content -->
             <StackLayout x:Name="BaseContent"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand" />

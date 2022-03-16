@@ -151,7 +151,7 @@ namespace Breadcrumb
                     if (!page.Equals(pages.LastOrDefault()))
                     {
                         // Create breadcrumb
-                        Frame breadCrumb1 = BreadCrumbLabelCreator(page, false, page.Equals(pages.FirstOrDefault()));
+                        PancakeView breadCrumb1 = BreadCrumbLabelCreator(page, false, page.Equals(pages.FirstOrDefault()));
 
                         // Add tap gesture
                         if (IsNavigationEnabled)
@@ -184,7 +184,7 @@ namespace Breadcrumb
                     BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
 
                     // Create selectedPage title label
-                    Frame breadCrumb2 = BreadCrumbLabelCreator(page, true, page.Equals(pages.FirstOrDefault()));
+                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true, page.Equals(pages.FirstOrDefault()));
 
                     // Move BreadCrumb of selectedPage to start the animation
                     breadCrumb2.TranslationX = Application.Current.MainPage.Width;
@@ -208,7 +208,7 @@ namespace Breadcrumb
         /// <param name="page"></param>
         /// <param name="isLast"></param>
         /// <param name="isFirst"></param>
-        private Frame BreadCrumbLabelCreator(Page page, bool isLast, bool isFirst)
+        private PancakeView BreadCrumbLabelCreator(Page page, bool isLast, bool isFirst)
         {
             // Create StackLayout to contain the label within a PancakeView
             StackLayout stackLayout = new()
@@ -242,27 +242,28 @@ namespace Breadcrumb
                 stackLayout.Children.Add(breadcrumbText);
             }
 
+            
+
+            Frame accessibilityContainer = !isLast && IsNavigationEnabled ? new BreadcrumbButton() : new Frame();
+            accessibilityContainer.HasShadow = false;
+            accessibilityContainer.BackgroundColor = Color.Transparent;
+            accessibilityContainer.Padding = 10;
+            accessibilityContainer.VerticalOptions = LayoutOptions.Center;
+            accessibilityContainer.Content = stackLayout;
+
             PancakeView container = new PancakeView
             {
-                Padding = 10,
-                VerticalOptions = LayoutOptions.Center,
                 CornerRadius = isLast ? LastBreadcrumbCornerRadius : CornerRadius,
-                Content = stackLayout,
+                Content = accessibilityContainer,
                 Margin = BreadcrumbMargin
             };
             container.SetBinding(BackgroundColorProperty, new Binding(isLast ? nameof(LastBreadcrumbBackgroundColor) : nameof(BreadcrumbBackgroundColor), source: new RelativeBindingSource(RelativeBindingSourceMode.FindAncestor, typeof(Breadcrumb))));
 
 
-            Frame accessibilityContainer = !isLast && IsNavigationEnabled ? new BreadcrumbButton() : new Frame();
-            accessibilityContainer.HasShadow = false;
-            accessibilityContainer.BackgroundColor = Color.Transparent;
-            accessibilityContainer.Padding = 0;
-            accessibilityContainer.Content = container;
-
             AutomationProperties.SetIsInAccessibleTree(accessibilityContainer, true);
             AutomationProperties.SetName(accessibilityContainer, page.Title);
 
-            return accessibilityContainer;
+            return container;
         }
 
         /// <summary>
