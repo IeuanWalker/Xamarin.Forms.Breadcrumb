@@ -15,7 +15,7 @@ Also incorporated [Xamarin.Forms.Pancake](https://github.com/sthewissen/Xamarin.
 
 Basic example             |  Production Example
 :-------------------------:|:-------------------------:
-![Example gif](https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/blob/master/Example.gif)  |  ![Production Example gif](https://github.com/IeuanWalker/Xamarin.Forms.Breadcrumb/blob/master/ProdExample.gif)
+![Example gif](/Example.gif)  |  ![Production Example gif](/ProdExample.gif)
 
 
 
