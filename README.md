@@ -32,7 +32,7 @@ BreadcrumbButtonRenderer.Init();
 
 To add to a page the first thing we need to do is tell our XAML page where it can find the Breadcrumb control, which is done by adding the following attribute to our ContentPage:
 
-```xaml
+```xml
 <ContentPage x:Class="DemoApp.Pages.BasePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -48,7 +48,7 @@ To add to a page the first thing we need to do is tell our XAML page where it ca
 
 Next up, just add the breadcrumb control onto that page and you're all set.
 
-```xaml
+```xml
 <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start" />
 ```
 
@@ -72,7 +72,7 @@ Next up, just add the breadcrumb control onto that page and you're all set.
 You are able to change the first breadcrumb to an Icon, embedded image or url image.
 It implements the Xamarin.Forms ImageSource object.
 
-```xaml
+```xml
 <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
     <breadcrumb:Breadcrumb.FirstBreadCrumb>
         <FontImageSource FontFamily="{StaticResource FontAwesome}"
@@ -88,7 +88,7 @@ You are able to change the separators to an Icon, embedded image or url image.
 It implements the Xamarin.Forms ImageSource object.
 
 Font - (FontAwesome)
-```xaml
+```xml
 <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
     <breadcrumb:Breadcrumb.Separator>
         <FontImageSource FontFamily="{StaticResource FontAwesome}"
@@ -100,7 +100,7 @@ Font - (FontAwesome)
 ```
 
 Image - URL
-```xaml
+```xml
 <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
     <breadcrumb:Breadcrumb.Separator>
         <UriImageSource Uri="https://cdn.iconscout.com/icon/free/png-256/xamarin-4-599473.png" />
@@ -109,7 +109,7 @@ Image - URL
 ```
 
 Image - Embedded
-```xaml
+```xml
 <breadcrumb:Breadcrumb Padding="15" VerticalOptions="Start">
     <breadcrumb:Breadcrumb.Separator>
         <FileImageSource File="exampleImage.png" />
