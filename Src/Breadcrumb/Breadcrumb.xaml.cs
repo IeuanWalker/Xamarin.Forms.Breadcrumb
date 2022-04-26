@@ -135,71 +135,6 @@ namespace Breadcrumb
         public Breadcrumb()
         {
             InitializeComponent();
-
-            // Event fired the moment ContentView is displayed
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                // Get list of all pages in the NavigationStack that has a selectedPage title
-                List<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title)).ToList();
-
-                // If any pages, make the control visible
-                IsVisible = pages.Count > 0;
-
-                // Loop all pages
-                foreach (Page page in pages)
-                {
-                    if (!page.Equals(pages.LastOrDefault()))
-                    {
-                        // Create breadcrumb
-                        PancakeView breadCrumb1 = BreadCrumbLabelCreator(page, false, page.Equals(pages.FirstOrDefault()));
-
-                        // Add tap gesture
-                        if (IsNavigationEnabled)
-                        {
-                            TapGestureRecognizer tapGesture = new()
-                            {
-                                CommandParameter = page,
-                                Command = new Command<Page>(async item => await GoBack(item).ConfigureAwait(false))
-                            };
-                            breadCrumb1.GestureRecognizers.Add(tapGesture);
-
-                        }
-
-                        // Add breadcrumb and separator to BreadCrumbContainer
-                        BreadCrumbContainer.Children.Add(breadCrumb1);
-
-                        // Add separator
-                        Image separator = new()
-                        {
-                            Source = Separator,
-                            VerticalOptions = LayoutOptions.Center
-                        };
-                        AutomationProperties.SetIsInAccessibleTree(separator, false);
-                        BreadCrumbContainer.Children.Add(separator);
-
-                        continue;
-                    }
-
-                    // Add ChildAdded event to trigger animation
-                    BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
-
-                    // Create selectedPage title label
-                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true, page.Equals(pages.FirstOrDefault()));
-
-                    // Move BreadCrumb of selectedPage to start the animation
-                    breadCrumb2.TranslationX = Application.Current.MainPage.Width;
-
-                    // Scroll to end of control
-                    await Task.Delay(10);
-                    await BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer, ScrollToPosition.End, false);
-
-                    // Add breadcrumb to container
-                    BreadCrumbContainer.Children.Add(breadCrumb2);
-
-                    // Scroll to last breadcrumb
-                    await BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer, ScrollToPosition.End, AnimationSpeed != 0);
-                }
-            });
         }
 
         /// <summary>
@@ -327,6 +262,74 @@ namespace Breadcrumb
 
             // Remove current page
             await Navigation.PopAsync();
+        }
+
+        private void LifecycleEffect_Loaded(object sender, System.EventArgs e)
+        {
+            // Event fired the moment ContentView is displayed
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                // Get list of all pages in the NavigationStack that has a selectedPage title
+                List<Page> pages = Navigation.NavigationStack.Select(x => x).Where(x => !string.IsNullOrEmpty(x?.Title)).ToList();
+
+                // If any pages, make the control visible
+                IsVisible = pages.Count > 0;
+
+                // Loop all pages
+                foreach (Page page in pages)
+                {
+                    if (!page.Equals(pages.LastOrDefault()))
+                    {
+                        // Create breadcrumb
+                        PancakeView breadCrumb1 = BreadCrumbLabelCreator(page, false, page.Equals(pages.FirstOrDefault()));
+
+                        // Add tap gesture
+                        if (IsNavigationEnabled)
+                        {
+                            TapGestureRecognizer tapGesture = new()
+                            {
+                                CommandParameter = page,
+                                Command = new Command<Page>(async item => await GoBack(item).ConfigureAwait(false))
+                            };
+                            breadCrumb1.GestureRecognizers.Add(tapGesture);
+
+                        }
+
+                        // Add breadcrumb and separator to BreadCrumbContainer
+                        BreadCrumbContainer.Children.Add(breadCrumb1);
+
+                        // Add separator
+                        Image separator = new()
+                        {
+                            Source = Separator,
+                            VerticalOptions = LayoutOptions.Center
+                        };
+                        AutomationProperties.SetIsInAccessibleTree(separator, false);
+                        BreadCrumbContainer.Children.Add(separator);
+
+                        continue;
+                    }
+
+                    // Add ChildAdded event to trigger animation
+                    BreadCrumbContainer.ChildAdded += AnimatedStack_ChildAdded;
+
+                    // Create selectedPage title label
+                    PancakeView breadCrumb2 = BreadCrumbLabelCreator(page, true, page.Equals(pages.FirstOrDefault()));
+
+                    // Move BreadCrumb of selectedPage to start the animation
+                    breadCrumb2.TranslationX = Application.Current.MainPage.Width;
+
+                    // Scroll to end of control
+                    await Task.Delay(10);
+                    await BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer, ScrollToPosition.End, false);
+
+                    // Add breadcrumb to container
+                    BreadCrumbContainer.Children.Add(breadCrumb2);
+
+                    // Scroll to last breadcrumb
+                    await BreadCrumbsScrollView.ScrollToAsync(BreadCrumbContainer, ScrollToPosition.End, AnimationSpeed != 0);
+                }
+            });
         }
     }
 }
