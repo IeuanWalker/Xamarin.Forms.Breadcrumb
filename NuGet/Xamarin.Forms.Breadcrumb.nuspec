@@ -14,8 +14,9 @@
     <icon>logo.png</icon>
     <dependencies>
       <group>
-        <dependency id="Xamarin.Forms" version="5.0.0.2012" />
+        <dependency id="Xamarin.Forms" version="5.0.0.2291" />
         <dependency id="Xamarin.Forms.PancakeView" version="1.4.2" />
+	    <dependency id="Xamarin.CommunityToolkit" version="2.0.2" />
       </group>
     </dependencies>
   </metadata>
