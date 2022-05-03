@@ -63,10 +63,16 @@
       <Version>28.0.0.3</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0.5" />
-    <PackageReference Include="Xamarin.Forms">
-      <Version>5.0.0.2012</Version>
+    <PackageReference Include="Xamarin.AndroidX.Core">
+      <Version>1.6.0.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit">
+      <Version>2.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>5.0.0.2291</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.4.0.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Breadcrumb\Breadcrumb.csproj">
