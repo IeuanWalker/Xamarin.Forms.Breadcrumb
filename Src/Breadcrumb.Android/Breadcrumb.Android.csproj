@@ -72,7 +72,7 @@
     <PackageReference Include="Xamarin.Forms">
       <Version>5.0.0.2291</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.4.0.2" />
+    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.6.1.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Breadcrumb\Breadcrumb.csproj">
